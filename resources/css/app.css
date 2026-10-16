@@ -1,6 +1,14 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
+/* css COMPONENTS */
+@import "./components/navbar.css";
+
+/* css PAGES */
+@import "./pages/beranda.css";
+@import "./pages/jadwal-dokter.css";
+@import "./pages/ketersediaan-tempat-tidur.css";
+
 :root {
     --rs-primary: #087f5b;
     --rs-primary-dark: #056647;

@@ -3,20 +3,45 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description"
-        content="Portal RS PKU Muhammadiyah Sukoharjo. Informasi profil rumah sakit, jadwal dokter, dan ketersediaan tempat tidur.">
+    <meta
+        name="description"
+        content="{{ $metaDescription ?? 'Portal RS PKU Muhammadiyah Sukoharjo. Informasi profil rumah sakit, jadwal dokter, dan ketersediaan tempat tidur.' }}"
+    >
 
+    <meta
+        name="keywords"
+        content="rumah sakit, rspkuskh, pku sukoharjo, rawat jalan, rawat inap, rs bpjs"
+    >
+
+    <meta name="author" content="RS PKU Muhammadiyah Sukoharjo">
     <meta name="theme-color" content="#087f5b">
 
-    <title>{{ $title ?? 'RS PKU Muhammadiyah Sukoharjo' }}</title>
+    <title>{{ $title ?? 'Portal RS PKU Muhammadiyah Sukoharjo' }}</title>
+
+    <link
+        rel="apple-touch-icon"
+        sizes="76x76"
+        href="{{ asset('img/pku/pku_ico.png') }}"
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="96x96"
+        href="{{ asset('img/pku/pku_ico.png') }}"
+    >
+
+    <link
+        rel="shortcut icon"
+        href="{{ asset('img/pku/pku_ico.png') }}"
+    >
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @livewireStyles
-
 </head>
 
 <body>
@@ -26,12 +51,20 @@
         <div class="rs-container">
             <div class="rs-navbar-inner">
 
-                <a href="{{ route('beranda') }}" wire:navigate class="rs-brand">
+                {{-- BRAND --}}
+                <a href="{{ route('beranda') }}"
+                    wire:navigate
+                    class="rs-brand"
+                    aria-label="Beranda RS PKU Muhammadiyah Sukoharjo">
 
-                    <img src="{{ asset('images/logo-rs.png') }}" alt="Logo RS PKU Muhammadiyah Sukoharjo"
-                        onerror="this.style.display='none'">
+                    <img
+                        src="{{ asset('img/pku/logo-1-sm-green.png') }}"
+                        alt="Logo RS PKU Muhammadiyah Sukoharjo"
+                        width="54"
+                        height="54"
+                    >
 
-                    <div>
+                    <div class="rs-brand-text">
                         <div class="rs-brand-title">
                             RS PKU MUHAMMADIYAH
                         </div>
@@ -42,32 +75,106 @@
                     </div>
                 </a>
 
-                <button class="btn btn-outline-success d-lg-none" type="button" id="rsMenuToggle"
-                    aria-label="Buka navigasi" aria-expanded="false">
-                    <i class="bi bi-list fs-5"></i>
+                {{-- MOBILE TOGGLE --}}
+                <button
+                    class="rs-menu-toggle"
+                    type="button"
+                    id="rsMenuToggle"
+                    aria-label="Buka navigasi"
+                    aria-expanded="false"
+                    aria-controls="rsNavigation"
+                >
+                    <i class="bi bi-list"></i>
                 </button>
 
+                {{-- NAVIGATION --}}
                 <nav class="rs-nav" id="rsNavigation">
 
-                    <a href="{{ route('beranda') }}" wire:navigate wire:current="active">
-                        Beranda
+                    {{-- Beranda --}}
+                    <a href="{{ route('beranda') }}"
+                    wire:navigate
+                    @class(['rs-nav-link', 'active' => request()->routeIs('beranda')])
+                    @if(request()->routeIs('beranda')) aria-current="page" @endif>
+                        <i class="bi bi-house-door"></i>
+                        <span>Beranda</span>
                     </a>
 
-                    <a href="{{ route('profil-rs') }}" wire:navigate wire:current="active">
-                        Profil RS
+                    {{-- Profil RS --}}
+                    <a href="{{ route('profil-rs') }}"
+                    wire:navigate
+                    @class(['rs-nav-link', 'active' => request()->routeIs('profil-rs')])
+                    @if(request()->routeIs('profil-rs')) aria-current="page" @endif>
+                        <i class="bi bi-hospital"></i>
+                        <span>Profil RS</span>
                     </a>
 
-                    <a href="{{ route('tentang') }}" wire:navigate wire:current="active">
-                        Tentang
-                    </a>
+                    {{-- Dropdown Publik --}}
+                    <div
+                        id="rsPublicDropdown"
+                        @class([
+                            'rs-nav-dropdown',
+                            'is-active' => request()->routeIs(
+                                'jadwal-dokter',
+                                'ketersediaan-tempat-tidur'
+                            ),
+                        ])
+                    >
+                        <button
+                            type="button"
+                            id="rsPublicDropdownToggle"
+                            class="rs-nav-link rs-nav-dropdown-toggle"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            <i class="bi bi-grid"></i>
+                            <span>Publik</span>
+                            <i class="bi bi-chevron-down rs-dropdown-chevron"></i>
+                        </button>
 
-                    <a href="{{ route('jadwal-dokter') }}" wire:navigate wire:current="active">
-                        Jadwal Dokter
-                    </a>
+                        <div class="rs-nav-dropdown-menu">
 
-                    <a href="{{ route('ketersediaan-tempat-tidur') }}" wire:navigate wire:current="active">
-                        Ketersediaan Tempat Tidur
-                    </a>
+                            {{-- Jadwal Dokter --}}
+                            <a
+                                href="{{ route('jadwal-dokter') }}"
+                                wire:navigate
+                                @class([
+                                    'rs-nav-dropdown-item',
+                                    'active' => request()->routeIs('jadwal-dokter'),
+                                ])
+                                @if(request()->routeIs('jadwal-dokter'))
+                                    aria-current="page"
+                                @endif
+                            >
+                                <i class="bi bi-calendar2-week"></i>
+
+                                <span class="rs-dropdown-text">
+                                    <strong>Jadwal Dokter</strong>
+                                    <small>Lihat jadwal praktik dokter</small>
+                                </span>
+                            </a>
+
+                            {{-- Ketersediaan Tempat Tidur --}}
+                            <a
+                                href="{{ route('ketersediaan-tempat-tidur') }}"
+                                wire:navigate
+                                @class([
+                                    'rs-nav-dropdown-item',
+                                    'active' => request()->routeIs('ketersediaan-tempat-tidur'),
+                                ])
+                                @if(request()->routeIs('ketersediaan-tempat-tidur'))
+                                    aria-current="page"
+                                @endif
+                            >
+                                <i class="bi bi-hospital"></i>
+
+                                <span class="rs-dropdown-text">
+                                    <strong>Ketersediaan Tempat Tidur</strong>
+                                    <small>Informasi ketersediaan tempat tidur</small>
+                                </span>
+                            </a>
+
+                        </div>
+                    </div>
 
                 </nav>
 
@@ -89,7 +196,7 @@
                 <div class="col-12 col-lg-5">
                     <div class="d-flex align-items-center gap-3 mb-3">
 
-                        <img src="{{ asset('images/logo-rs.png') }}" alt="Logo RS PKU Muhammadiyah Sukoharjo"
+                        <img src="{{ asset('img/pku/logo-rs.png') }}" alt="Logo RS PKU Muhammadiyah Sukoharjo"
                             width="50" height="50" style="object-fit:contain"
                             onerror="this.style.display='none'">
 
@@ -113,18 +220,37 @@
                 </div>
 
                 <div class="col-12 col-sm-6 col-lg-3">
+
                     <h3>Kontak</h3>
 
                     <p>
                         <i class="bi bi-geo-alt me-2"></i>
-                        Sukoharjo, Jawa Tengah
+                        Jl. Mayor Sunaryo No. 37, Sukoharjo, Jawa Tengah
                     </p>
 
                     <p>
-                        <a href="https://rspkusukoharjo.com/">
-                            Website Resmi Rumah Sakit
+                        <i class="bi bi-telephone me-2"></i>
+                        IGD 24 Jam:
+                        <a href="tel:02715991165">0271 599 1165</a>
+                    </p>
+
+                    <p>
+                        <i class="bi bi-telephone me-2"></i>
+                        Informasi RS:
+                        <a href="tel:0271593979">0271 593 979</a>
+                    </p>
+
+                    <p>
+                        <i class="bi bi-whatsapp me-2"></i>
+                        <a
+                            href="https://wa.me/6285150763480"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            WhatsApp Informasi
                         </a>
                     </p>
+
                 </div>
 
                 <div class="col-12 col-sm-6 col-lg-4">
@@ -177,25 +303,66 @@
         function initRsNavbar() {
             const toggle = document.getElementById('rsMenuToggle');
             const navigation = document.getElementById('rsNavigation');
+            const dropdown = document.getElementById('rsPublicDropdown');
+            const dropdownToggle = document.getElementById('rsPublicDropdownToggle');
 
-            if (!toggle || !navigation || toggle.dataset.initialized) {
+            if (!toggle || !navigation || !dropdown || !dropdownToggle) {
+                return;
+            }
+
+            // Hindari memasang event listener berulang.
+            if (toggle.dataset.initialized === 'true') {
                 return;
             }
 
             toggle.dataset.initialized = 'true';
 
-            toggle.addEventListener('click', function() {
+            function closeDropdown() {
+                dropdown.classList.remove('is-open');
+                dropdownToggle.setAttribute('aria-expanded', 'false');
+            }
+
+            function closeMobileNavigation() {
+                navigation.classList.remove('show');
+                toggle.setAttribute('aria-expanded', 'false');
+                closeDropdown();
+            }
+
+            toggle.addEventListener('click', function () {
                 const isOpen = navigation.classList.toggle('show');
 
                 toggle.setAttribute('aria-expanded', String(isOpen));
+
+                if (!isOpen) {
+                    closeDropdown();
+                }
             });
 
-            navigation.querySelectorAll('a').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    navigation.classList.remove('show');
+            dropdownToggle.addEventListener('click', function (event) {
+                event.stopPropagation();
 
-                    toggle.setAttribute('aria-expanded', 'false');
-                });
+                const isOpen = dropdown.classList.toggle('is-open');
+
+                dropdownToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            // Klik di luar dropdown akan menutup menu.
+            document.addEventListener('click', function (event) {
+                if (!dropdown.contains(event.target)) {
+                    closeDropdown();
+                }
+            });
+
+            // Escape menutup dropdown.
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
+                    closeDropdown();
+                }
+            });
+
+            // Tutup navigasi mobile setelah memilih halaman.
+            navigation.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', closeMobileNavigation);
             });
         }
 

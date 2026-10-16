@@ -1,0 +1,1169 @@
+/* =========================================
+   BERANDA: GLOBAL
+========================================= */
+
+.rs-homepage {
+    overflow: hidden;
+    color: #334b3e;
+    background: #fff;
+}
+
+.rs-homepage img {
+    max-width: 100%;
+}
+
+.rs-homepage figure {
+    margin: 0;
+}
+
+.rs-homepage h1,
+.rs-homepage h2,
+.rs-homepage h3,
+.rs-homepage p {
+    overflow-wrap: break-word;
+}
+
+.rs-homepage h2 {
+    color: #153f30;
+    font-size: clamp(1.8rem, 3vw, 2.65rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.045em;
+}
+
+.rs-homepage h2 span {
+    color: #087f5b;
+}
+
+.rs-container {
+    width: min(100% - 40px, 1200px);
+    margin-inline: auto;
+}
+
+.rs-home-section {
+    padding-block: 100px;
+}
+
+.rs-home-section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #087f5b;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.rs-home-hero {
+    position: relative;
+    isolation: isolate;
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    background-color: #143f30;
+    background-image: url("/img/pku/gedung/bg-gedung-very-small.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.rs-home-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 39, 28, 0.94) 0%,
+            rgba(7, 53, 36, 0.84) 43%,
+            rgba(7, 53, 36, 0.32) 100%
+        );
+}
+
+.rs-home-hero-container {
+    padding-block: 90px 120px;
+}
+
+.rs-home-hero-content {
+    max-width: 690px;
+    color: #fff;
+}
+
+.rs-home-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    color: #c8f2d9;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+.rs-home-eyebrow-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #69e3a4;
+    box-shadow: 0 0 0 5px rgba(105, 227, 164, 0.13);
+}
+
+.rs-home-hero h1 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2.6rem, 5.6vw, 4.8rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.065em;
+}
+
+.rs-home-hero h1 span {
+    display: block;
+    margin-top: 8px;
+    color: #91edbb;
+}
+
+.rs-home-hero-description {
+    max-width: 570px;
+    margin: 25px 0 20px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.04rem;
+    line-height: 1.9;
+}
+
+.rs-home-hero-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.rs-home-hero-values span {
+    padding: 7px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.rs-home-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.rs-home-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 51px;
+    padding: 13px 19px;
+    border: 1px solid transparent;
+    border-radius: 13px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.rs-home-button:hover {
+    transform: translateY(-2px);
+}
+
+.rs-home-button-primary {
+    background: #70dfa1;
+    color: #103e2c;
+    box-shadow: 0 10px 30px rgba(43, 201, 121, 0.2);
+}
+
+.rs-home-button-primary:hover {
+    background: #91edb8;
+    color: #103e2c;
+}
+
+.rs-home-button-light {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.rs-home-button-light:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+}
+
+.rs-home-hero-note {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 27px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.rs-home-hero-note i {
+    color: #91edbb;
+    font-size: 1.1rem;
+}
+
+.rs-home-hero-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(4, 34, 24, 0.58);
+    backdrop-filter: blur(12px);
+}
+
+.rs-home-hero-bottom-inner {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 58px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.rs-home-hero-bottom-divider {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #70dfa1;
+}
+
+/* =========================================
+   QUICK ACCESS
+========================================= */
+
+.rs-home-quick-section {
+    position: relative;
+    z-index: 2;
+    margin-top: -1px;
+    padding-block: 28px;
+    background: #f6faf7;
+    border-bottom: 1px solid #eaf1ec;
+}
+
+.rs-home-quick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.rs-home-quick-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid #e5eee7;
+    border-radius: 17px;
+    background: #fff;
+    color: #294b39;
+    text-decoration: none;
+    box-shadow: 0 5px 18px rgba(20, 63, 48, 0.025);
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.rs-home-quick-card:hover {
+    transform: translateY(-4px);
+    border-color: #b8dfc6;
+    color: #087f5b;
+    box-shadow: 0 14px 32px rgba(20, 63, 48, 0.07);
+}
+
+.rs-home-quick-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 49px;
+    width: 49px;
+    height: 49px;
+    border-radius: 15px;
+    background: #e8f6ef;
+    color: #087f5b;
+    font-size: 1.4rem;
+}
+
+.rs-home-quick-icon-whatsapp {
+    background: #e6f8ed;
+    color: #159453;
+}
+
+.rs-home-quick-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.rs-home-quick-content h3 {
+    margin: 0 0 6px;
+    color: #214737;
+    font-size: 0.96rem;
+    font-weight: 800;
+}
+
+.rs-home-quick-content p {
+    margin: 0;
+    color: #78877d;
+    font-size: 0.79rem;
+    line-height: 1.65;
+}
+
+.rs-home-quick-arrow {
+    color: #9aaba0;
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   PARTNERS
+========================================= */
+
+.rs-home-partners {
+    padding-block: 43px;
+    text-align: center;
+    border-bottom: 1px solid #edf2ee;
+}
+
+.rs-home-partners-description {
+    margin: 10px 0 25px;
+    color: #718078;
+    font-size: 0.9rem;
+}
+
+.rs-home-partners-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    align-items: center;
+    gap: 25px;
+}
+
+.rs-home-partner {
+    display: grid;
+    place-items: center;
+    min-height: 70px;
+}
+
+.rs-home-partner img {
+    display: block;
+    max-width: 125px;
+    max-height: 55px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition:
+        filter 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.rs-home-partner:hover img {
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+/* =========================================
+   SECTION HEADINGS
+========================================= */
+
+.rs-home-section-heading {
+    max-width: 700px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.rs-home-section-heading h2 {
+    margin: 14px 0;
+}
+
+.rs-home-section-heading > p {
+    margin: 0;
+    color: #718078;
+    font-size: 0.96rem;
+    line-height: 1.85;
+}
+
+.rs-home-section-heading-row {
+    max-width: none;
+    text-align: left;
+}
+
+/* =========================================
+   FEATURE CARDS
+========================================= */
+
+.rs-home-about {
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(210, 242, 221, 0.36),
+            transparent 30%
+        ),
+        #fff;
+}
+
+.rs-home-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.rs-home-feature-card {
+    padding: 28px;
+    border: 1px solid #e5eee7;
+    border-radius: 19px;
+    background: #fff;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.rs-home-feature-card:hover {
+    transform: translateY(-4px);
+    border-color: #c7e6d2;
+    box-shadow: 0 14px 35px rgba(20, 63, 48, 0.06);
+}
+
+.rs-home-feature-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 23px;
+    border-radius: 16px;
+    background: #e8f6ef;
+    color: #087f5b;
+    font-size: 1.5rem;
+}
+
+.rs-home-feature-card h3 {
+    margin: 0 0 11px;
+    color: #244b39;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.rs-home-feature-card p {
+    margin: 0;
+    color: #748278;
+    font-size: 0.86rem;
+    line-height: 1.8;
+}
+
+/* =========================================
+   EMERGENCY
+========================================= */
+
+.rs-home-emergency-section {
+    padding-block: 15px 80px;
+    background: #fff;
+}
+
+.rs-home-emergency-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 34px;
+    border: 1px solid #f0d8d6;
+    border-radius: 22px;
+    background:
+        radial-gradient(
+            circle at 0 0,
+            rgba(255, 224, 220, 0.75),
+            transparent 50%
+        ),
+        #fff8f7;
+}
+
+.rs-home-emergency-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 65px;
+    width: 65px;
+    height: 65px;
+    border-radius: 19px;
+    background: #ffe7e3;
+    color: #c7463d;
+    font-size: 1.9rem;
+}
+
+.rs-home-emergency-content {
+    flex: 1;
+}
+
+.rs-home-emergency-label {
+    color: #b54a40;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+.rs-home-emergency-content h2 {
+    margin: 8px 0;
+    color: #8d2f2b;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+.rs-home-emergency-content h2 span {
+    color: #c7463d;
+}
+
+.rs-home-emergency-content p {
+    max-width: 650px;
+    margin: 0;
+    color: #795f5c;
+    font-size: 0.88rem;
+    line-height: 1.8;
+}
+
+.rs-home-emergency-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.rs-home-button-emergency {
+    background: #bd3c35;
+    color: #fff;
+}
+
+.rs-home-button-emergency:hover {
+    background: #a82d27;
+    color: #fff;
+}
+
+.rs-home-emergency-action small {
+    color: #8d6965;
+    font-size: 0.8rem;
+}
+
+/* =========================================
+   SERVICES / GALLERY
+========================================= */
+
+.rs-home-services {
+    background: #f6faf7;
+}
+
+.rs-home-services-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    align-items: center;
+    gap: 80px;
+}
+
+.rs-home-services-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    align-items: start;
+}
+
+.rs-home-services-gallery figure {
+    overflow: hidden;
+    border-radius: 20px;
+    background: #e8f0eb;
+    box-shadow: 0 10px 30px rgba(20, 63, 48, 0.08);
+}
+
+.rs-home-services-gallery img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 170px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.rs-home-services-gallery figure:hover img {
+    transform: scale(1.04);
+}
+
+.rs-home-gallery-main {
+    grid-column: 1 / -1;
+}
+
+.rs-home-gallery-main img {
+    height: 300px;
+}
+
+.rs-home-gallery-secondary img,
+.rs-home-gallery-tertiary img {
+    height: 190px;
+}
+
+.rs-home-services-content h2 {
+    margin: 15px 0 20px;
+}
+
+.rs-home-services-content > p {
+    margin-bottom: 25px;
+    color: #718078;
+    font-size: 0.94rem;
+    line-height: 1.9;
+}
+
+.rs-home-service-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 12px;
+    margin-bottom: 30px;
+}
+
+.rs-home-service-list > div {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    color: #42594e;
+    font-size: 0.84rem;
+    line-height: 1.6;
+}
+
+.rs-home-service-list i {
+    flex-shrink: 0;
+    color: #139363;
+    font-size: 1rem;
+}
+
+.rs-home-text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #087f5b;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.rs-home-text-link:hover {
+    color: #075e43;
+}
+
+/* =========================================
+   HEALTH POSTERS
+========================================= */
+
+.rs-home-posters {
+    background: #fff;
+}
+
+.rs-home-poster-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.rs-home-poster-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border: 1px solid #e5eee7;
+    border-radius: 16px;
+    background: #f6faf7;
+    text-decoration: none;
+}
+
+.rs-home-poster-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.rs-home-poster-card:hover img {
+    transform: scale(1.04);
+}
+
+.rs-home-poster-overlay {
+    position: absolute;
+    inset: auto 0 0;
+    display: flex;
+    justify-content: center;
+    padding: 35px 12px 15px;
+    background: linear-gradient(transparent, rgba(12, 43, 30, 0.85));
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.rs-home-poster-card:hover .rs-home-poster-overlay {
+    opacity: 1;
+}
+
+.rs-home-poster-overlay span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* =========================================
+   PATIENT SURVEY
+========================================= */
+
+.rs-home-survey {
+    background: #f5faf6;
+}
+
+.rs-home-survey-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: start;
+    gap: 70px;
+}
+
+.rs-home-survey-content h2 {
+    margin: 15px 0 20px;
+}
+
+.rs-home-survey-content p {
+    color: #718078;
+    font-size: 0.92rem;
+    line-height: 1.9;
+}
+
+.rs-home-survey-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.rs-home-survey-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #e2ece5;
+    border-radius: 17px;
+    background: #fff;
+    color: #294b39;
+    text-decoration: none;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.rs-home-survey-card:hover {
+    transform: translateX(3px);
+    border-color: #c4e4cf;
+    box-shadow: 0 10px 25px rgba(20, 63, 48, 0.05);
+}
+
+.rs-home-survey-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 47px;
+    width: 47px;
+    height: 47px;
+    border-radius: 14px;
+    background: #e8f6ef;
+    color: #087f5b;
+    font-size: 1.3rem;
+}
+
+.rs-home-survey-card > div:nth-child(2) {
+    flex: 1;
+}
+
+.rs-home-survey-card h3 {
+    margin: 0 0 5px;
+    color: #244b39;
+    font-size: 0.94rem;
+    font-weight: 800;
+}
+
+.rs-home-survey-card p {
+    margin: 0;
+    color: #78877d;
+    font-size: 0.8rem;
+    line-height: 1.65;
+}
+
+.rs-home-survey-arrow {
+    color: #92a399;
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   MOTTO
+========================================= */
+
+.rs-home-motto {
+    padding-block: 75px;
+    background:
+        radial-gradient(
+            circle at 50% 0,
+            rgba(117, 218, 157, 0.18),
+            transparent 55%
+        ),
+        #103e2e;
+}
+
+.rs-home-motto-card {
+    max-width: 850px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.rs-home-motto-icon {
+    display: grid;
+    place-items: center;
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 17px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #8beab2;
+    font-size: 1.3rem;
+}
+
+.rs-home-motto .rs-home-section-label {
+    color: #8beab2;
+}
+
+.rs-home-motto blockquote {
+    margin: 22px 0;
+    color: #fff;
+    font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: -0.035em;
+}
+
+.rs-home-motto-values {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 27px;
+}
+
+.rs-home-motto-values span {
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    color: #d4f5df;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 991.98px) {
+    .rs-home-section {
+        padding-block: 75px;
+    }
+
+    .rs-home-hero {
+        min-height: 560px;
+        background-position: 60% center;
+    }
+
+    .rs-home-hero-container {
+        padding-block: 80px 110px;
+    }
+
+    .rs-home-quick-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rs-home-quick-card {
+        padding: 18px;
+    }
+
+    .rs-home-partners-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .rs-home-feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .rs-home-emergency-card {
+        flex-wrap: wrap;
+    }
+
+    .rs-home-emergency-content {
+        flex-basis: calc(100% - 100px);
+    }
+
+    .rs-home-emergency-action {
+        width: 100%;
+        align-items: flex-start;
+        padding-left: 90px;
+    }
+
+    .rs-home-services-grid,
+    .rs-home-survey-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .rs-home-services-gallery {
+        max-width: 700px;
+    }
+
+    .rs-home-poster-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .rs-home-survey-content {
+        max-width: 650px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .rs-container {
+        width: min(100% - 30px, 1200px);
+    }
+
+    .rs-home-section {
+        padding-block: 58px;
+    }
+
+    .rs-home-hero {
+        min-height: 610px;
+        background-position: 63% center;
+    }
+
+    .rs-home-hero-overlay {
+        background: linear-gradient(
+            90deg,
+            rgba(7, 39, 28, 0.95),
+            rgba(7, 53, 36, 0.79)
+        );
+    }
+
+    .rs-home-hero-container {
+        padding-block: 65px 110px;
+    }
+
+    .rs-home-eyebrow {
+        font-size: 0.66rem;
+        letter-spacing: 0.1em;
+    }
+
+    .rs-home-hero h1 {
+        font-size: clamp(2.4rem, 11vw, 3.4rem);
+    }
+
+    .rs-home-hero-description {
+        font-size: 0.92rem;
+    }
+
+    .rs-home-hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .rs-home-button {
+        width: 100%;
+    }
+
+    .rs-home-hero-bottom-inner {
+        flex-wrap: wrap;
+        gap: 9px;
+        padding-block: 12px;
+        font-size: 0.68rem;
+    }
+
+    .rs-home-quick-grid {
+        gap: 10px;
+    }
+
+    .rs-home-quick-card {
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .rs-home-quick-icon {
+        flex-basis: 43px;
+        width: 43px;
+        height: 43px;
+        font-size: 1.2rem;
+    }
+
+    .rs-home-quick-content h3 {
+        font-size: 0.88rem;
+    }
+
+    .rs-home-quick-content p {
+        font-size: 0.74rem;
+    }
+
+    .rs-home-partners {
+        padding-block: 32px;
+    }
+
+    .rs-home-partners-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .rs-home-partner img {
+        max-width: 115px;
+        max-height: 48px;
+    }
+
+    .rs-home-section-heading {
+        margin-bottom: 30px;
+        text-align: left;
+    }
+
+    .rs-home-section-heading h2 {
+        font-size: 1.8rem;
+    }
+
+    .rs-home-section-heading > p {
+        font-size: 0.88rem;
+    }
+
+    .rs-home-feature-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .rs-home-feature-card {
+        padding: 23px;
+    }
+
+    .rs-home-feature-icon {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 17px;
+        font-size: 1.3rem;
+    }
+
+    .rs-home-emergency-card {
+        gap: 17px;
+        padding: 22px;
+    }
+
+    .rs-home-emergency-icon {
+        flex-basis: 48px;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        font-size: 1.4rem;
+    }
+
+    .rs-home-emergency-content {
+        flex-basis: calc(100% - 65px);
+    }
+
+    .rs-home-emergency-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .rs-home-emergency-content p {
+        font-size: 0.83rem;
+    }
+
+    .rs-home-emergency-action {
+        padding-left: 0;
+    }
+
+    .rs-home-services-grid,
+    .rs-home-survey-grid {
+        gap: 35px;
+    }
+
+    .rs-home-services-gallery {
+        gap: 9px;
+    }
+
+    .rs-home-services-gallery figure {
+        border-radius: 13px;
+    }
+
+    .rs-home-gallery-main img {
+        height: 225px;
+        min-height: 0;
+    }
+
+    .rs-home-gallery-secondary img,
+    .rs-home-gallery-tertiary img {
+        height: 140px;
+        min-height: 0;
+    }
+
+    .rs-home-services-content h2,
+    .rs-home-survey-content h2 {
+        font-size: 1.85rem;
+    }
+
+    .rs-home-service-list {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .rs-home-poster-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .rs-home-poster-overlay {
+        opacity: 1;
+        padding: 25px 8px 10px;
+        font-size: 0.72rem;
+    }
+
+    .rs-home-survey-card {
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .rs-home-survey-icon {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+
+    .rs-home-survey-card h3 {
+        font-size: 0.86rem;
+    }
+
+    .rs-home-survey-card p {
+        font-size: 0.75rem;
+    }
+
+    .rs-home-motto {
+        padding-block: 58px;
+    }
+
+    .rs-home-motto blockquote {
+        font-size: 1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rs-home-button,
+    .rs-home-quick-card,
+    .rs-home-feature-card,
+    .rs-home-services-gallery img,
+    .rs-home-poster-card img,
+    .rs-home-survey-card {
+        transition: none;
+    }
+}
