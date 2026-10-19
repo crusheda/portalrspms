@@ -3,11 +3,14 @@
 
 /* css COMPONENTS */
 @import "./components/navbar.css";
+@import "./components/radio-player.css";
 
 /* css PAGES */
 @import "./pages/beranda.css";
+@import "./pages/profil-rs.css";
 @import "./pages/jadwal-dokter.css";
 @import "./pages/ketersediaan-tempat-tidur.css";
+@import "./pages/tentang.css";
 
 :root {
     --rs-primary: #087f5b;
@@ -689,5 +692,563 @@ img {
 
     .rs-check-list {
         grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   NAVBAR LIQUID GLASS
+========================================= */
+
+/* Kondisi awal: navbar normal full-width */
+.rs-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+
+    width: 100%;
+    margin-inline: auto;
+
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid transparent;
+    border-bottom-color: var(--rs-border);
+    border-radius: 0;
+
+    box-shadow: none;
+
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+
+    transition:
+        width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        top 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        border-radius 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+/* Kondisi scroll: navbar berubah menjadi floating glass */
+.rs-navbar.is-scrolled {
+    top: 12px;
+
+    width: min(1160px, calc(100% - 32px));
+    margin-inline: auto;
+
+    background: rgba(255, 255, 255, 0.76);
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 22px;
+
+    box-shadow:
+        0 8px 32px rgba(20, 50, 35, 0.10),
+        0 2px 8px rgba(20, 50, 35, 0.04);
+
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+}
+
+/* Garis tipis di bagian atas untuk memperkuat efek kaca */
+.rs-navbar.is-scrolled::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.95),
+        transparent
+    );
+
+    pointer-events: none;
+}
+
+/* Pertahankan posisi logo dan navigasi */
+.rs-navbar-inner {
+    transition: min-height 0.3s ease;
+}
+
+/* Navbar sedikit lebih ringkas saat floating */
+.rs-navbar.is-scrolled .rs-navbar-inner {
+    min-height: 68px;
+}
+
+/* Pastikan dropdown tidak terpotong */
+.rs-navbar,
+.rs-navbar-inner,
+.rs-nav-dropdown {
+    overflow: visible;
+}
+
+/* Dropdown menu tetap berada di atas konten */
+.rs-nav-dropdown-menu {
+    z-index: 1040;
+}
+
+/* =========================================
+   RESPONSIVE LIQUID GLASS
+========================================= */
+
+@media (max-width: 991.98px) {
+    .rs-navbar.is-scrolled {
+        width: calc(100% - 24px);
+        top: 10px;
+        border-radius: 18px;
+    }
+
+    .rs-navbar.is-scrolled .rs-navbar-inner {
+        min-height: 64px;
+    }
+
+    /* Menu mobile mengikuti lebar navbar floating */
+    .rs-navbar.is-scrolled .rs-nav {
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+
+        padding: 12px 20px 20px;
+
+        background: rgba(255, 255, 255, 0.94);
+
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 18px;
+
+        box-shadow: 0 12px 35px rgba(20, 50, 35, 0.12);
+
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        backdrop-filter: blur(24px) saturate(180%);
+    }
+}
+
+/* Hormati pengaturan pengurangan animasi perangkat */
+@media (prefers-reduced-motion: reduce) {
+    .rs-navbar,
+    .rs-navbar-inner {
+        transition: none;
+    }
+}
+
+/* Dropdown Publik terbuka saat cursor diarahkan */
+@media (hover: hover) and (pointer: fine) {
+    .rs-nav-dropdown:hover .rs-nav-dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .rs-nav-dropdown:hover .rs-dropdown-chevron {
+        transform: rotate(180deg);
+    }
+}
+
+/* =========================================
+   NAVBAR DROPDOWN - FIXED MOBILE BEHAVIOR
+========================================= */
+
+.rs-nav-dropdown {
+    position: relative;
+}
+
+.rs-dropdown-chevron {
+    flex-shrink: 0;
+    font-size: 11px;
+    transition: transform 0.3s ease;
+}
+
+/* Dropdown desktop */
+.rs-nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    z-index: 1040;
+
+    min-width: 230px;
+    padding: 8px;
+
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(8, 127, 91, 0.12);
+    border-radius: 16px;
+
+    box-shadow:
+        0 14px 40px rgba(20, 50, 35, 0.12),
+        0 3px 10px rgba(20, 50, 35, 0.04);
+
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.22s ease,
+        visibility 0.22s ease,
+        transform 0.22s ease;
+}
+
+/* Dropdown desktop hanya terbuka saat hover atau fokus */
+@media (min-width: 992px) {
+    .rs-nav-dropdown:hover .rs-nav-dropdown-menu,
+    .rs-nav-dropdown:focus-within .rs-nav-dropdown-menu,
+    .rs-nav-dropdown.is-open .rs-nav-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .rs-nav-dropdown:hover .rs-dropdown-chevron,
+    .rs-nav-dropdown.is-open .rs-dropdown-chevron {
+        transform: rotate(180deg);
+    }
+}
+
+/* Tampilan link dropdown */
+.rs-nav-dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 11px 13px;
+
+    color: #52635a;
+    border-radius: 10px;
+
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.6;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        padding-left 0.2s ease;
+}
+
+.rs-nav-dropdown-menu a:hover,
+.rs-nav-dropdown-menu a:focus-visible {
+    padding-left: 17px;
+    color: var(--rs-primary-dark);
+    background: rgba(8, 127, 91, 0.08);
+}
+
+/* =========================================
+   MOBILE NAVBAR
+========================================= */
+
+@media (max-width: 991.98px) {
+
+    /*
+     * PENTING:
+     * Menu utama harus tetap display:none saat tertutup.
+     * Jangan menimpa aturan ini dengan display:flex.
+     */
+
+    .rs-nav {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+
+        max-height: calc(100dvh - 120px);
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        padding: 12px;
+
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        border-radius: 20px;
+
+        box-shadow:
+            0 18px 50px rgba(20, 50, 35, 0.12),
+            0 4px 12px rgba(20, 50, 35, 0.04);
+
+        -webkit-backdrop-filter: blur(28px) saturate(180%);
+        backdrop-filter: blur(28px) saturate(180%);
+
+        scrollbar-width: thin;
+        scrollbar-color: rgba(8, 127, 91, 0.25) transparent;
+    }
+
+    /* Menu utama hanya terbuka saat memiliki kelas show */
+    .rs-nav.show {
+        display: flex;
+    }
+
+    /* Link menu utama */
+    .rs-nav > a,
+    .rs-nav > .rs-nav-dropdown > a,
+    .rs-nav > .rs-nav-dropdown > button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+
+        width: 100%;
+        min-height: 46px;
+        padding: 12px 14px;
+
+        color: #40564a;
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 12px;
+
+        font-size: 12px;
+        font-weight: 500;
+        text-align: left;
+    }
+
+    .rs-nav > a:hover,
+    .rs-nav > a:focus-visible,
+    .rs-nav > .rs-nav-dropdown.is-open > a,
+    .rs-nav > .rs-nav-dropdown.is-open > button {
+        color: var(--rs-primary-dark);
+        background: rgba(8, 127, 91, 0.075);
+        border-color: rgba(8, 127, 91, 0.09);
+    }
+
+    .rs-nav-dropdown {
+        width: 100%;
+    }
+
+    /*
+     * Dropdown submenu tersembunyi secara default.
+     * Hover desktop tidak boleh memaksanya terbuka di mobile.
+     */
+
+    .rs-nav-dropdown-menu {
+        position: static;
+
+        display: none;
+
+        width: 100%;
+        min-width: 0;
+        margin-top: 4px;
+        padding: 6px;
+
+        background: rgba(8, 127, 91, 0.035);
+        border: 1px solid rgba(8, 127, 91, 0.08);
+        border-radius: 14px;
+
+        box-shadow: none;
+
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+
+        pointer-events: auto;
+        transition: none;
+    }
+
+    /* Submenu hanya terbuka jika parent memiliki is-open */
+    .rs-nav-dropdown.is-open > .rs-nav-dropdown-menu {
+        display: block;
+        animation: rsMobileDropdownIn 0.22s ease both;
+    }
+
+    /* Panah berputar */
+    .rs-nav-dropdown.is-open .rs-dropdown-chevron {
+        transform: rotate(180deg);
+    }
+
+    /* Link submenu */
+    .rs-nav-dropdown-menu a {
+        min-height: 42px;
+        padding: 10px 12px;
+
+        border-radius: 9px;
+        font-size: 11px;
+    }
+
+    .rs-nav-dropdown-menu a::before {
+        content: "";
+
+        width: 5px;
+        height: 5px;
+        flex-shrink: 0;
+
+        background: rgba(8, 127, 91, 0.45);
+        border-radius: 50%;
+    }
+
+    .rs-nav-dropdown-menu a:hover {
+        padding-left: 16px;
+        color: var(--rs-primary-dark);
+        background: rgba(8, 127, 91, 0.08);
+    }
+
+    /* Tombol CTA */
+    .rs-nav .rs-nav-cta {
+        justify-content: center;
+        min-height: 46px;
+        margin-top: 5px;
+        border-radius: 12px;
+        box-shadow: 0 5px 14px rgba(8, 127, 91, 0.16);
+    }
+
+    /* Navbar floating */
+    .rs-navbar.is-scrolled .rs-nav {
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        max-height: calc(100dvh - 130px);
+    }
+}
+
+@keyframes rsMobileDropdownIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rs-nav-dropdown-menu,
+    .rs-nav-dropdown-menu a,
+    .rs-dropdown-chevron {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* =========================================
+   GLOBAL SCROLL TO TOP
+========================================= */
+
+.rs-scroll-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 2147483647;
+
+    display: grid;
+    place-items: center;
+
+    width: 52px;
+    height: 52px;
+    padding: 0;
+
+    color: #fff;
+    background: linear-gradient(145deg, #0b9369, #056647);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 28px rgba(5, 102, 71, 0.25),
+        0 3px 8px rgba(5, 102, 71, 0.12);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(16px) scale(0.88);
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+        bottom 0.25s ease,
+        box-shadow 0.25s ease;
+
+    isolation: isolate;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.rs-scroll-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.rs-scroll-to-top > i {
+    position: relative;
+    z-index: 2;
+    font-size: 21px;
+    transition: transform 0.25s ease;
+}
+
+.rs-scroll-to-top:hover {
+    box-shadow:
+        0 14px 32px rgba(5, 102, 71, 0.32),
+        0 4px 10px rgba(5, 102, 71, 0.15);
+}
+
+.rs-scroll-to-top:hover > i {
+    transform: translateY(-3px);
+}
+
+.rs-scroll-to-top:focus-visible {
+    outline: 3px solid rgba(8, 127, 91, 0.35);
+    outline-offset: 4px;
+}
+
+/* Efek lingkaran saat tombol muncul */
+.rs-scroll-to-top-ripple {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: inherit;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.rs-scroll-to-top.is-visible .rs-scroll-to-top-ripple {
+    animation: rsScrollTopRipple 0.7s ease-out;
+}
+
+@keyframes rsScrollTopRipple {
+    0% {
+        opacity: 0.7;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.35);
+    }
+}
+
+/* Mobile */
+@media (max-width: 575.98px) {
+    .rs-scroll-to-top {
+        right: 16px;
+        bottom: 18px;
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+    }
+}
+
+/* Hormati preferensi pengurangan animasi */
+@media (prefers-reduced-motion: reduce) {
+    .rs-scroll-to-top,
+    .rs-scroll-to-top > i {
+        transition: none !important;
+    }
+
+    .rs-scroll-to-top-ripple {
+        animation: none !important;
     }
 }

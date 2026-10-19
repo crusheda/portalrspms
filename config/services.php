@@ -53,7 +53,8 @@ return [
 
 
     'rs' => [
-        'base_url' => env('URL_PUBLIC_RS', 'http://192.168.253.250:1137/api/'),
+        // 'base_url' => env('URL_PUBLIC_RS', 'http://192.168.253.250:1137/api/'),
+        'base_url' => env('URL_PUBLIC_RS', 'http://103.165.60.210:1137/api/'),
         'username' => env('RS_USERNAME'),
         'password' => env('RS_PASSWORD'),
     ],

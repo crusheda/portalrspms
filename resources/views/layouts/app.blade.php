@@ -60,11 +60,10 @@
                     <img
                         src="{{ asset('img/pku/logo-1-sm-green.png') }}"
                         alt="Logo RS PKU Muhammadiyah Sukoharjo"
-                        width="54"
-                        height="54"
+                        style="width:100%"
                     >
 
-                    <div class="rs-brand-text">
+                    {{-- <div class="rs-brand-text">
                         <div class="rs-brand-title">
                             RS PKU MUHAMMADIYAH
                         </div>
@@ -72,7 +71,7 @@
                         <div class="rs-brand-subtitle">
                             SUKOHARJO
                         </div>
-                    </div>
+                    </div> --}}
                 </a>
 
                 {{-- MOBILE TOGGLE --}}
@@ -108,6 +107,15 @@
                         <span>Profil RS</span>
                     </a>
 
+                    {{-- Tentang --}}
+                    <a href="{{ route('tentang') }}"
+                    wire:navigate
+                    @class(['rs-nav-link', 'active' => request()->routeIs('tentang')])
+                    @if(request()->routeIs('tentang')) aria-current="page" @endif>
+                        <i class="bi bi-hospital"></i>
+                        <span>Tentang</span>
+                    </a>
+
                     {{-- Dropdown Publik --}}
                     <div
                         id="rsPublicDropdown"
@@ -127,7 +135,7 @@
                             aria-expanded="false"
                         >
                             <i class="bi bi-grid"></i>
-                            <span>Publik</span>
+                            <span>Informasi</span>
                             <i class="bi bi-chevron-down rs-dropdown-chevron"></i>
                         </button>
 
@@ -149,7 +157,7 @@
 
                                 <span class="rs-dropdown-text">
                                     <strong>Jadwal Dokter</strong>
-                                    <small>Lihat jadwal praktik dokter</small>
+                                    <small>Lihat Jadwal Praktik Dokter Spesialis</small>
                                 </span>
                             </a>
 
@@ -168,8 +176,8 @@
                                 <i class="bi bi-hospital"></i>
 
                                 <span class="rs-dropdown-text">
-                                    <strong>Ketersediaan Tempat Tidur</strong>
-                                    <small>Informasi ketersediaan tempat tidur</small>
+                                    <strong>Tempat Tidur</strong>
+                                    <small>Lihat Ketersediaan Tempat Tidur</small>
                                 </span>
                             </a>
 
@@ -186,6 +194,60 @@
     <main>
         {{ $slot }}
     </main>
+
+    {{-- FLOATING RADIO PLAYER --}}
+    @persist('radio-player')
+        <div id="rsRadioPlayer" class="rs-radio-player" hidden>
+
+            {{-- Header --}}
+            <div class="rs-radio-player-header">
+                <div class="rs-radio-player-brand">
+                    <i class="bi bi-broadcast-pin"></i>
+
+                    <div>
+                        <strong>Radio Muhammadiyah</strong>
+                        <small>
+                            <span class="rs-radio-live-dot"></span>
+                            LIVE
+                        </small>
+                    </div>
+                </div>
+
+                <div class="rs-radio-player-controls">
+                    <button
+                        type="button"
+                        id="rsRadioMinimize"
+                        class="rs-radio-control"
+                        aria-label="Minimalkan radio"
+                        title="Minimalkan"
+                    >
+                        <i class="bi bi-dash-lg"></i>
+                    </button>
+
+                    <button
+                        type="button"
+                        id="rsRadioClose"
+                        class="rs-radio-control"
+                        aria-label="Tutup radio"
+                        title="Tutup radio"
+                    >
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            {{-- Audio --}}
+            <div id="rsRadioPlayerBody" class="rs-radio-player-body">
+                <audio
+                    id="rsRadioFrame"
+                    controls
+                    preload="none"
+                    style="width: 100%;"
+                ></audio>
+            </div>
+
+        </div>
+    @endpersist
 
     {{-- FOOTER GLOBAL --}}
     <footer class="rs-footer" id="kontak">
@@ -297,6 +359,20 @@
         </div>
     </footer>
 
+    {{-- GLOBAL SCROLL TO TOP --}}
+    <button
+        type="button"
+        id="rsScrollToTop"
+        class="rs-scroll-to-top"
+        aria-label="Kembali ke atas"
+        title="Kembali ke atas"
+        aria-hidden="true"
+        tabindex="-1"
+    >
+        <i class="bi bi-arrow-up"></i>
+        <span class="rs-scroll-to-top-ripple"></span>
+    </button>
+
     @livewireScripts
 
     <script>
@@ -346,6 +422,26 @@
                 dropdownToggle.setAttribute('aria-expanded', String(isOpen));
             });
 
+            /* Dropdown otomatis terbuka saat cursor diarahkan ke Publik */
+            dropdown.addEventListener('mouseenter', function () {
+                if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                    dropdown.classList.add('is-open');
+                    dropdownToggle.setAttribute('aria-expanded', 'true');
+                }
+            });
+
+            /* Tutup dropdown dengan sedikit jeda agar submenu bisa diklik */
+            dropdown.addEventListener('mouseleave', function () {
+                if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                    setTimeout(function () {
+                        if (!dropdown.matches(':hover')) {
+                            dropdown.classList.remove('is-open');
+                            dropdownToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    }, 150);
+                }
+            });
+
             // Klik di luar dropdown akan menutup menu.
             document.addEventListener('click', function (event) {
                 if (!dropdown.contains(event.target)) {
@@ -366,9 +462,34 @@
             });
         }
 
-        document.addEventListener('DOMContentLoaded', initRsNavbar);
+        document.addEventListener('DOMContentLoaded', function () {
+            initRsNavbar();
+            updateRsNavbarOnScroll();
+        });
 
-        document.addEventListener('livewire:navigated', initRsNavbar);
+        document.addEventListener('livewire:navigated', function () {
+            initRsNavbar();
+            updateRsNavbarOnScroll();
+        });
+
+        function updateRsNavbarOnScroll() {
+            const navbar = document.querySelector('.rs-navbar');
+
+            if (!navbar) {
+                return;
+            }
+
+            navbar.classList.toggle('is-scrolled', window.scrollY > 24);
+        }
+
+        /* Hindari memasang event listener scroll berulang */
+        if (!window.rsNavbarScrollInitialized) {
+            window.rsNavbarScrollInitialized = true;
+
+            window.addEventListener('scroll', updateRsNavbarOnScroll, {
+                passive: true
+            });
+        }
     </script>
 
 </body>

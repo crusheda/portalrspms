@@ -13,8 +13,10 @@ class extends Component {};
     {{-- =========================================
          HERO
     ========================================== --}}
-    <section class="rs-home-hero">
-
+    <section
+        class="rs-home-hero"
+        style="--rs-home-hero-bg: url('{{ asset('img/pku/gedung/drone-pku.jpg') }}')"
+    >
         <div class="rs-home-hero-overlay"></div>
 
         <div class="rs-container rs-home-hero-container">
@@ -23,18 +25,18 @@ class extends Component {};
 
                 <div class="rs-home-eyebrow">
                     <span class="rs-home-eyebrow-dot"></span>
-                    PORTAL RESMI RUMAH SAKIT
+                    PORTAL RESMI
                 </div>
 
                 <h1>
-                    Pelayanan Kesehatan
-                    <span>Dengan Sepenuh Hati.</span>
+                    Rumah Sakit
+                    <span>PKU Muhammadiyah</span>
+                    Sukoharjo
                 </h1>
 
                 <p class="rs-home-hero-description">
-                    RS PKU Muhammadiyah Sukoharjo hadir untuk memberikan
-                    pelayanan kesehatan yang profesional, nyaman, dan
-                    berlandaskan nilai-nilai Islami.
+                    Memberikan pelayanan kesehatan yang profesional, nyaman,
+                    dan berlandaskan nilai-nilai Islami.
                 </p>
 
                 <div class="rs-home-hero-values">
@@ -46,6 +48,7 @@ class extends Component {};
 
                 <div class="rs-home-hero-actions">
 
+                    {{-- Baris Pertama: Jadwal Dokter dan Hubungi Kami --}}
                     <a
                         href="{{ route('jadwal-dokter') }}"
                         wire:navigate
@@ -65,6 +68,22 @@ class extends Component {};
                         <i class="bi bi-whatsapp"></i>
                         <span>Hubungi Kami</span>
                     </a>
+
+                    {{-- Radio Muhammadiyah --}}
+                    <button
+                        type="button"
+                        class="rs-home-button rs-home-button-radio rs-home-button-radio-small"
+                        data-radio-open
+                        aria-label="Putar Radio Muhammadiyah"
+                        title="Radio Muhammadiyah"
+                    >
+                        <i class="bi bi-play-circle rs-radio-play-icon"></i>
+
+                        <span class="rs-radio-button-text">
+                            <i class="bi bi-broadcast-pin"></i>
+                            Radio Muhammadiyah
+                        </span>
+                    </button>
 
                 </div>
 
@@ -92,7 +111,6 @@ class extends Component {};
         </div>
 
     </section>
-
 
     {{-- =========================================
          QUICK ACCESS
@@ -376,7 +394,7 @@ class extends Component {};
                         <span>Telepon IGD</span>
                     </a>
 
-                    <small>0271 599 1165</small>
+                    {{-- <small>0271 599 1165</small> --}}
 
                 </div>
 
@@ -567,7 +585,7 @@ class extends Component {};
                 <div class="rs-home-survey-content">
 
                     <span class="rs-home-section-label">
-                        SUARA ANDA BERARTI
+                        SUARA ANDA SANGAT BERARTI BAGI KAMI
                     </span>
 
                     <h2>
@@ -602,7 +620,7 @@ class extends Component {};
 
                         <div>
                             <h3>Rawat Inap</h3>
-                            <p>Berikan penilaian pengalaman perawatan Anda.</p>
+                            <p>Berikan penilaian pengalaman perawatan Inap Anda.</p>
                         </div>
 
                         <i class="bi bi-arrow-up-right rs-home-survey-arrow"></i>
@@ -620,7 +638,7 @@ class extends Component {};
 
                         <div>
                             <h3>Rawat Jalan</h3>
-                            <p>Sampaikan pengalaman pelayanan poliklinik.</p>
+                            <p>Sampaikan pengalaman pelayanan Poliklinik.</p>
                         </div>
 
                         <i class="bi bi-arrow-up-right rs-home-survey-arrow"></i>

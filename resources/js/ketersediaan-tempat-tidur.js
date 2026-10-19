@@ -59,6 +59,7 @@ function initKetersediaanTempatTidur() {
     let countdownTimer = null;
     let refreshTimer = null;
     let requestController = null;
+    let destroyed = false;
 
     const numberFormat = new Intl.NumberFormat('id-ID');
 
@@ -449,6 +450,8 @@ function initKetersediaanTempatTidur() {
     // --------------------------------------------------
 
     async function loadTempatTidur() {
+        if (destroyed) return;
+
         if (!apiUrl) {
             showAlert('URL API ketersediaan tempat tidur tidak ditemukan.');
             return;
@@ -489,10 +492,7 @@ function initKetersediaanTempatTidur() {
 
             const result = await response.json();
 
-            console.log(
-                '[Ketersediaan TT] Respons API:',
-                result
-            );
+            if (destroyed || requestController.signal.aborted) return;
 
             const data = normalizeData(result);
 
@@ -545,9 +545,14 @@ function initKetersediaanTempatTidur() {
                 tableBody.appendChild(tr);
             }
         } finally {
-            if (refreshButton) {
+            if (
+                !destroyed &&
+                refreshButton
+            ) {
                 refreshButton.disabled = false;
             }
+
+            requestController = null;
         }
     }
 
@@ -612,6 +617,8 @@ function initKetersediaanTempatTidur() {
 
     // Cleanup ketika halaman ditinggalkan.
     ttCleanup = function () {
+        destroyed = true;
+
         clearInterval(countdownTimer);
         clearInterval(refreshTimer);
 
@@ -622,8 +629,6 @@ function initKetersediaanTempatTidur() {
 
         container.dataset.initialized = 'false';
     };
-
-    const cleanupHandler = ttCleanup;
 }
 
 // Navigasi awal

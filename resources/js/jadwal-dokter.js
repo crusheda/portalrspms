@@ -547,9 +547,17 @@ function initJadwalDokter() {
                 cache: 'no-store',
             });
 
+            if (destroyed || requestController.signal.aborted) {
+                return;
+            }
+
             const result = await response.json();
 
-            if (thisRequest !== requestNumber || destroyed) {
+            if (
+                destroyed ||
+                requestController.signal.aborted ||
+                thisRequest !== requestNumber
+            ) {
                 return;
             }
 
@@ -583,12 +591,6 @@ function initJadwalDokter() {
                         timeStyle: 'short',
                     }).format(new Date())}`;
             }
-
-            console.log('Jadwal dokter berhasil dimuat:', {
-                week: result.week ?? el.week?.value,
-                total: allJadwal.length,
-                warning: result.warning ?? null,
-            });
         } catch (error) {
             if (error.name === 'AbortError') {
                 return;
@@ -597,8 +599,6 @@ function initJadwalDokter() {
             if (thisRequest !== requestNumber || destroyed) {
                 return;
             }
-
-            console.error('Gagal mengambil jadwal dokter:', error);
 
             allJadwal = [];
             filteredJadwal = [];
@@ -792,21 +792,20 @@ function initJadwalDokter() {
     }
 
     jadwalDokterCleanup = () => {
+        if (destroyed) return;
+
         destroyed = true;
 
         requestNumber++;
 
         requestController?.abort();
+        requestController = null;
 
         listeners.forEach(removeListener => removeListener());
 
-        if (container.dataset.initialized === 'true') {
-            delete container.dataset.initialized;
-        }
+        delete container.dataset.initialized;
 
-        if (jadwalDokterCleanup) {
-            jadwalDokterCleanup = null;
-        }
+        jadwalDokterCleanup = null;
     };
 
     loadJadwal();
