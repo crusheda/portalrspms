@@ -151,4 +151,24 @@ document.addEventListener('click', function (event) {
     }
 
     document.addEventListener('livewire:navigated', initScrollToTop);
+
+    // VIDEO PLAYER profil.mp4
+    const profileVideoModal = document.getElementById('rsProfileVideoModal');
+    const profileVideo = document.getElementById('rsProfileVideo');
+
+    if (profileVideoModal && profileVideo) {
+        profileVideoModal.addEventListener('shown.bs.modal', async () => {
+            try {
+                await profileVideo.play();
+            } catch (error) {
+                // Jika autoplay ditolak browser, pengguna dapat menekan tombol Play.
+            }
+        });
+
+        profileVideoModal.addEventListener('hidden.bs.modal', () => {
+            profileVideo.pause();
+            profileVideo.currentTime = 0;
+        });
+    }
+
 })();

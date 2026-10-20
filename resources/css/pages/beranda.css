@@ -1146,3 +1146,1247 @@
         transition: none;
     }
 }
+
+
+/* =========================================
+   HOME: SERVICE FEATURE SECTIONS
+========================================= */
+
+.rs-home-services {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 5% 10%,
+            rgba(211, 241, 222, 0.32),
+            transparent 27%
+        ),
+        #f6faf7;
+}
+
+.rs-service-feature {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: center;
+    gap: clamp(40px, 6vw, 82px);
+    padding-block: 12px 100px;
+}
+
+.rs-service-feature + .rs-service-feature {
+    padding-top: 75px;
+    border-top: 1px solid #e4eee7;
+}
+
+.rs-service-feature-last {
+    padding-bottom: 12px;
+}
+
+.rs-service-feature-content {
+    min-width: 0;
+}
+
+.rs-service-feature-content h2 {
+    margin: 16px 0 20px;
+    color: #153f30;
+    font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -0.045em;
+}
+
+.rs-service-feature-content h2 span {
+    display: block;
+    color: #087f5b;
+}
+
+.rs-service-feature-content > p {
+    margin: 0 0 27px;
+    color: #718078;
+    font-size: 0.94rem;
+    line-height: 1.9;
+}
+
+.rs-service-feature-content .rs-home-section-label {
+    gap: 8px;
+}
+
+.rs-service-feature-content .rs-home-section-label i {
+    font-size: 1rem;
+}
+
+/* Gallery layout */
+
+.rs-service-feature-gallery {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 15px;
+    min-width: 0;
+    isolation: isolate;
+}
+
+.rs-service-photo {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #e5eee8;
+    box-shadow: 0 12px 30px rgba(20, 63, 48, 0.09);
+}
+
+.rs-service-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+    transition: transform 0.55s ease;
+}
+
+.rs-service-photo:hover img {
+    transform: scale(1.045);
+}
+
+.rs-service-photo-main {
+    grid-column: 1 / -1;
+}
+
+.rs-service-photo-main img {
+    height: clamp(230px, 27vw, 330px);
+}
+
+.rs-service-photo-secondary img,
+.rs-service-photo-tertiary img {
+    height: clamp(145px, 17vw, 205px);
+}
+
+.rs-service-photo-caption {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    width: fit-content;
+    max-width: calc(100% - 24px);
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 12px;
+    background: rgba(13, 54, 39, 0.78);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.rs-service-photo-caption i {
+    color: #91edbb;
+    font-size: 1.1rem;
+}
+
+.rs-service-gallery-decoration {
+    position: absolute;
+    top: -17px;
+    right: -17px;
+    z-index: -1;
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    border: 1px solid #d7eadf;
+    border-radius: 22px;
+    background: #e6f5ec;
+    color: #087f5b;
+    font-size: 1.7rem;
+}
+
+/* Commitment / service benefits */
+
+.rs-service-benefits {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 18px;
+    margin-bottom: 29px;
+}
+
+.rs-service-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    min-width: 0;
+}
+
+.rs-service-benefit-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 43px;
+    width: 43px;
+    height: 43px;
+    border: 1px solid #dcefe3;
+    border-radius: 14px;
+    background: #e8f6ef;
+    color: #087f5b;
+    font-size: 1.2rem;
+}
+
+.rs-service-benefit h3 {
+    margin: 2px 0 5px;
+    color: #244b39;
+    font-size: 0.88rem;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.rs-service-benefit p {
+    margin: 0;
+    color: #78877d;
+    font-size: 0.78rem;
+    line-height: 1.7;
+}
+
+/* Inpatient gallery */
+
+.rs-service-feature-inpatient {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+}
+
+.rs-service-feature-inpatient .rs-service-feature-gallery {
+    order: 2;
+}
+
+.rs-service-feature-inpatient .rs-service-feature-content {
+    order: 1;
+}
+
+.rs-service-inpatient-gallery {
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 15px;
+    padding-bottom: 48px;
+}
+
+.rs-service-inpatient-photo-one {
+    margin-top: 35px;
+}
+
+.rs-service-inpatient-photo-one img {
+    height: 210px;
+}
+
+.rs-service-inpatient-photo-two img {
+    height: 285px;
+}
+
+.rs-service-inpatient-photo-three img {
+    height: 245px;
+}
+
+.rs-service-inpatient-photo-four {
+    margin-top: 35px;
+}
+
+.rs-service-inpatient-photo-four img {
+    height: 210px;
+}
+
+.rs-service-gallery-note {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 12%;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 17px;
+    border: 1px solid #e2ece5;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 12px 30px rgba(20, 63, 48, 0.09);
+}
+
+.rs-service-gallery-note-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 43px;
+    width: 43px;
+    height: 43px;
+    border-radius: 13px;
+    background: #e8f6ef;
+    color: #087f5b;
+    font-size: 1.3rem;
+}
+
+.rs-service-gallery-note > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.rs-service-gallery-note strong {
+    color: #244b39;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.rs-service-gallery-note > div > span {
+    color: #78877d;
+    font-size: 0.73rem;
+    line-height: 1.55;
+}
+
+/* Ward list */
+
+.rs-service-ward-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 29px;
+}
+
+.rs-service-ward-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px 13px;
+    border: 1px solid #e3ede6;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.8);
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.rs-service-ward-item:hover {
+    transform: translateY(-2px);
+    border-color: #b9dec7;
+    box-shadow: 0 8px 20px rgba(20, 63, 48, 0.05);
+}
+
+.rs-service-ward-item > span {
+    display: grid;
+    place-items: center;
+    flex: 0 0 25px;
+    width: 25px;
+    height: 25px;
+    border-radius: 8px;
+    background: #e5f5eb;
+    color: #087f5b;
+    font-size: 0.95rem;
+}
+
+.rs-service-ward-item > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.rs-service-ward-item strong {
+    color: #294b39;
+    font-size: 0.8rem;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.rs-service-ward-item small {
+    color: #78877d;
+    font-size: 0.73rem;
+    line-height: 1.55;
+}
+
+/* Medical services gallery */
+
+.rs-service-medical-gallery {
+    padding: 8px 0 20px;
+}
+
+.rs-service-medical-photo-main {
+    grid-column: 1 / -1;
+}
+
+.rs-service-medical-photo-main img {
+    height: clamp(220px, 25vw, 300px);
+}
+
+.rs-service-medical-photo-secondary img,
+.rs-service-medical-photo-tertiary img {
+    height: clamp(150px, 17vw, 200px);
+}
+
+.rs-service-medical-badge {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: calc(100% - 20px);
+    padding: 13px 16px;
+    border: 1px solid #e0ece4;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(20, 63, 48, 0.1);
+}
+
+.rs-service-medical-badge > i {
+    display: grid;
+    place-items: center;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    background: #e8f6ef;
+    color: #087f5b;
+    font-size: 1.3rem;
+}
+
+.rs-service-medical-badge > span {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.rs-service-medical-badge strong {
+    color: #244b39;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.rs-service-medical-badge small {
+    color: #78877d;
+    font-size: 0.7rem;
+    line-height: 1.5;
+}
+
+/* Medical service catalog */
+
+.rs-service-catalog {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+    margin-bottom: 29px;
+}
+
+.rs-service-catalog-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    min-width: 0;
+    padding: 14px 12px;
+    border: 1px solid #e4eee7;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.8);
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.rs-service-catalog-item:hover {
+    transform: translateY(-2px);
+    border-color: #bfdfcb;
+    box-shadow: 0 8px 22px rgba(20, 63, 48, 0.05);
+}
+
+.rs-service-catalog-item > span {
+    display: grid;
+    place-items: center;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: #e8f6ef;
+    color: #087f5b;
+    font-size: 1.1rem;
+}
+
+.rs-service-catalog-item > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.rs-service-catalog-item strong {
+    color: #294b39;
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.rs-service-catalog-item small {
+    color: #78877d;
+    font-size: 0.71rem;
+    line-height: 1.55;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 991.98px) {
+    .rs-service-feature,
+    .rs-service-feature-inpatient {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 42px;
+        padding-bottom: 75px;
+    }
+
+    .rs-service-feature + .rs-service-feature {
+        padding-top: 65px;
+    }
+
+    .rs-service-feature-last {
+        padding-bottom: 0;
+    }
+
+    .rs-service-feature-gallery {
+        width: 100%;
+        max-width: 680px;
+        margin-inline: auto;
+    }
+
+    .rs-service-feature-inpatient .rs-service-feature-gallery {
+        order: 1;
+    }
+
+    .rs-service-feature-inpatient .rs-service-feature-content {
+        order: 2;
+    }
+
+    .rs-service-feature-content {
+        max-width: 720px;
+    }
+
+    .rs-service-photo-main img {
+        height: 320px;
+    }
+
+    .rs-service-photo-secondary img,
+    .rs-service-photo-tertiary img {
+        height: 200px;
+    }
+
+    .rs-service-inpatient-photo-one img,
+    .rs-service-inpatient-photo-four img {
+        height: 230px;
+    }
+
+    .rs-service-inpatient-photo-two img {
+        height: 300px;
+    }
+
+    .rs-service-inpatient-photo-three img {
+        height: 260px;
+    }
+
+    .rs-service-medical-photo-main img {
+        height: 300px;
+    }
+
+    .rs-service-medical-photo-secondary img,
+    .rs-service-medical-photo-tertiary img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .rs-service-feature,
+    .rs-service-feature-inpatient {
+        gap: 32px;
+        padding-bottom: 58px;
+    }
+
+    .rs-service-feature + .rs-service-feature {
+        padding-top: 52px;
+    }
+
+    .rs-service-feature-last {
+        padding-bottom: 0;
+    }
+
+    .rs-service-feature-content h2 {
+        margin: 13px 0 16px;
+        font-size: 1.85rem;
+        line-height: 1.22;
+    }
+
+    .rs-service-feature-content > p {
+        margin-bottom: 22px;
+        font-size: 0.87rem;
+        line-height: 1.8;
+    }
+
+    .rs-service-feature-gallery {
+        gap: 9px;
+    }
+
+    .rs-service-photo {
+        border-radius: 14px;
+    }
+
+    .rs-service-photo-main img,
+    .rs-service-medical-photo-main img {
+        height: 225px;
+    }
+
+    .rs-service-photo-secondary img,
+    .rs-service-photo-tertiary img,
+    .rs-service-medical-photo-secondary img,
+    .rs-service-medical-photo-tertiary img {
+        height: 145px;
+    }
+
+    .rs-service-gallery-decoration {
+        top: -10px;
+        right: -5px;
+        width: 48px;
+        height: 48px;
+        border-radius: 15px;
+        font-size: 1.2rem;
+    }
+
+    .rs-service-photo-caption {
+        right: 8px;
+        bottom: 8px;
+        left: 8px;
+        gap: 6px;
+        padding: 8px 10px;
+        font-size: 0.7rem;
+    }
+
+    .rs-service-benefits {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .rs-service-benefit h3 {
+        font-size: 0.86rem;
+    }
+
+    .rs-service-benefit p {
+        font-size: 0.77rem;
+    }
+
+    .rs-service-inpatient-gallery {
+        gap: 9px;
+        padding-bottom: 57px;
+    }
+
+    .rs-service-inpatient-photo-one {
+        margin-top: 22px;
+    }
+
+    .rs-service-inpatient-photo-one img,
+    .rs-service-inpatient-photo-four img {
+        height: 155px;
+    }
+
+    .rs-service-inpatient-photo-two img {
+        height: 210px;
+    }
+
+    .rs-service-inpatient-photo-three img {
+        height: 180px;
+    }
+
+    .rs-service-inpatient-photo-four {
+        margin-top: 22px;
+    }
+
+    .rs-service-gallery-note {
+        left: 3%;
+        gap: 10px;
+        padding: 12px;
+        border-radius: 13px;
+    }
+
+    .rs-service-gallery-note-icon {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    .rs-service-gallery-note strong {
+        font-size: 0.75rem;
+    }
+
+    .rs-service-gallery-note > div > span {
+        font-size: 0.68rem;
+    }
+
+    .rs-service-ward-list {
+        gap: 9px;
+    }
+
+    .rs-service-ward-item {
+        gap: 8px;
+        padding: 12px 9px;
+        border-radius: 12px;
+    }
+
+    .rs-service-ward-item > span {
+        flex-basis: 22px;
+        width: 22px;
+        height: 22px;
+    }
+
+    .rs-service-ward-item strong {
+        font-size: 0.74rem;
+    }
+
+    .rs-service-ward-item small {
+        font-size: 0.68rem;
+    }
+
+    .rs-service-medical-gallery {
+        padding-bottom: 45px;
+    }
+
+    .rs-service-medical-badge {
+        right: 5px;
+        gap: 9px;
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .rs-service-medical-badge > i {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+        font-size: 1.05rem;
+    }
+
+    .rs-service-medical-badge strong {
+        font-size: 0.75rem;
+    }
+
+    .rs-service-medical-badge small {
+        font-size: 0.65rem;
+    }
+
+    .rs-service-catalog {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .rs-service-catalog-item {
+        padding: 12px;
+    }
+
+    .rs-service-catalog-item strong {
+        font-size: 0.79rem;
+    }
+
+    .rs-service-catalog-item small {
+        font-size: 0.72rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rs-service-photo img,
+    .rs-service-ward-item,
+    .rs-service-catalog-item {
+        transition: none;
+    }
+}
+
+
+/* =========================================
+   HOME: VIDEO PROFIL
+========================================= */
+
+.rs-home-video {
+    background: #fff;
+}
+
+.rs-home-video-heading {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.rs-home-video-heading h2 {
+    margin: 15px 0;
+    color: #153f30;
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.045em;
+}
+
+.rs-home-video-heading h2 span {
+    display: block;
+    color: #087f5b;
+}
+
+.rs-home-video-heading > p {
+    max-width: 590px;
+    margin: 0 auto;
+    color: #718078;
+    font-size: 0.94rem;
+    line-height: 1.85;
+}
+
+.rs-home-video-preview {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 300px;
+    aspect-ratio: 16 / 7;
+    border: 1px solid rgba(220, 238, 226, 0.8);
+    border-radius: 25px;
+    background: #123d30;
+    box-shadow: 0 24px 60px rgba(20, 63, 48, 0.12);
+}
+
+.rs-home-video-preview > img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.7s ease;
+}
+
+.rs-home-video-preview:hover > img {
+    transform: scale(1.035);
+}
+
+.rs-home-video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 39, 28, 0.93) 0%,
+            rgba(7, 53, 36, 0.72) 48%,
+            rgba(7, 39, 28, 0.2) 100%
+        );
+}
+
+.rs-home-video-preview-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 300px;
+    max-width: 660px;
+    padding: clamp(30px, 6vw, 75px);
+    color: #fff;
+}
+
+.rs-home-video-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 20px;
+    color: #c8f2d9;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+}
+
+.rs-home-video-tag i {
+    font-size: 1.1rem;
+}
+
+.rs-home-video-preview-content h3 {
+    margin: 0 0 27px;
+    color: #fff;
+    font-size: clamp(1.8rem, 3.6vw, 3.1rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.045em;
+}
+
+.rs-home-video-play {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.rs-home-video-play-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 55px;
+    width: 55px;
+    height: 55px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    background: #70dfa1;
+    color: #103e2c;
+    font-size: 1.8rem;
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.1);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.rs-home-video-play:hover .rs-home-video-play-icon {
+    transform: scale(1.08);
+    background: #91edb8;
+    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.12);
+}
+
+.rs-home-video-corner-icon {
+    position: absolute;
+    right: 30px;
+    bottom: 25px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 3.5rem;
+}
+
+/* Video modal */
+
+.rs-profile-video-modal .modal-dialog {
+    max-width: 1100px;
+    margin-inline: auto;
+}
+
+.rs-profile-video-modal .modal-content {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    background: #10251d;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+}
+
+.rs-profile-video-modal .modal-header {
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    background: #10251d;
+    color: #fff;
+}
+
+.rs-profile-video-modal .modal-title {
+    margin-top: 4px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.rs-profile-video-modal .btn-close {
+    flex-shrink: 0;
+}
+
+.rs-profile-video-modal-label {
+    color: #91edbb;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+.rs-profile-video-modal .modal-body {
+    padding: 0;
+    background: #000;
+}
+
+.rs-profile-video-player {
+    display: block;
+    width: 100%;
+    max-height: 75vh;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    object-fit: contain;
+}
+
+/* Responsive */
+
+@media (max-width: 767.98px) {
+    .rs-home-video-heading {
+        margin-bottom: 28px;
+        text-align: left;
+    }
+
+    .rs-home-video-heading h2 {
+        font-size: 1.85rem;
+    }
+
+    .rs-home-video-heading > p {
+        font-size: 0.88rem;
+    }
+
+    .rs-home-video-preview {
+        min-height: 390px;
+        aspect-ratio: auto;
+        border-radius: 18px;
+    }
+
+    .rs-home-video-preview > img {
+        object-position: 60% center;
+    }
+
+    .rs-home-video-overlay {
+        background: linear-gradient(
+            90deg,
+            rgba(7, 39, 28, 0.91),
+            rgba(7, 53, 36, 0.65)
+        );
+    }
+
+    .rs-home-video-preview-content {
+        min-height: 390px;
+        padding: 28px;
+    }
+
+    .rs-home-video-preview-content h3 {
+        font-size: 2rem;
+    }
+
+    .rs-home-video-corner-icon {
+        right: 18px;
+        bottom: 15px;
+        font-size: 2.5rem;
+    }
+
+    .rs-profile-video-modal .modal-dialog {
+        margin: 12px;
+    }
+
+    .rs-profile-video-modal .modal-content {
+        border-radius: 14px;
+    }
+
+    .rs-profile-video-modal .modal-header {
+        padding: 16px;
+    }
+
+    .rs-profile-video-player {
+        max-height: 65vh;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rs-home-video-preview > img,
+    .rs-home-video-play-icon {
+        transition: none;
+    }
+}
+
+
+/* =========================================
+   HOME PARTNERS / MITRA
+========================================= */
+
+.rs-home-partners {
+    position: relative;
+    overflow: hidden;
+    padding: 64px 0 72px;
+    background: #f7faf8;
+}
+
+.rs-home-partners .rs-home-section-label {
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.rs-home-partners-description {
+    max-width: 620px;
+    margin: 0 auto 36px;
+    color: #6b7d72;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.rs-home-partners-track-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    /* Efek fade di tepi carousel */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 5%,
+        #000 95%,
+        transparent
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 5%,
+        #000 95%,
+        transparent
+    );
+}
+
+.rs-home-partners-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 28px;
+    animation: rs-partners-scroll 65s linear infinite;
+    will-change: transform;
+}
+
+.rs-home-partners-track-wrapper:hover .rs-home-partners-track {
+    animation-play-state: paused;
+}
+
+.rs-home-partner {
+    display: flex;
+    flex: 0 0 180px;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 100px;
+    padding: 20px;
+    border: 1px solid #e8efe9;
+    border-radius: 16px;
+    background: #fff;
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.rs-home-partner:hover {
+    border-color: #c8e5d2;
+    box-shadow: 0 10px 28px rgba(18, 61, 48, 0.07);
+}
+
+.rs-home-partner img {
+    display: block;
+    /* width: auto; */
+    max-width: 100%;
+    max-height: 58px;
+    height: auto;
+    object-fit: contain;
+}
+
+/*
+ * Karena daftar mitra diduplikasi tepat dua kali,
+ * pergeseran 50% membuat animasi kembali ke posisi awal
+ * tanpa jeda yang terlihat.
+ */
+@keyframes rs-partners-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 767.98px) {
+    .rs-home-partners {
+        padding: 48px 0 54px;
+    }
+
+    .rs-home-partners-description {
+        margin-bottom: 28px;
+        padding: 0 12px;
+        font-size: 0.88rem;
+    }
+
+    .rs-home-partners-track {
+        gap: 16px;
+        animation-duration: 50s;
+    }
+
+    .rs-home-partner {
+        flex-basis: 145px;
+        width: 145px;
+        height: 86px;
+        padding: 16px;
+        border-radius: 13px;
+    }
+
+    .rs-home-partner img {
+        max-height: 48px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rs-home-partners-track {
+        animation: none;
+        will-change: auto;
+    }
+
+    .rs-home-partners-track-wrapper {
+        overflow-x: auto;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+}
+
+/* Fix rendering logo mitra pada carousel */
+
+.rs-home-partners-track-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    /* Nonaktifkan mask yang berpotensi menyebabkan glitch */
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+}
+
+.rs-home-partners-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 28px;
+
+    animation: rs-partners-scroll 65s linear infinite;
+
+    /* Hindari layer rendering paksa */
+    will-change: auto;
+}
+
+.rs-home-partner {
+    display: flex;
+    flex: 0 0 180px;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 100px;
+    padding: 20px;
+    background: #fff;
+}
+
+.rs-home-partner img {
+    display: block;
+    max-width: 100%;
+    max-height: 58px;
+    height: auto;
+    object-fit: contain;
+
+    /* Pastikan logo terlihat tanpa menunggu hover */
+    /* filter: none !important; */
+    /* opacity: 1 !important; */
+    /* visibility: visible !important; */
+    backface-visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rs-home-partners-track {
+        animation: none;
+    }
+}

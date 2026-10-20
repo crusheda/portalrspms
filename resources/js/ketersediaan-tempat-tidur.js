@@ -170,6 +170,36 @@ function initKetersediaanTempatTidur() {
     // --------------------------------------------------
     // RINGKASAN
     // --------------------------------------------------
+    /**
+     * Mengatur tampilan ringkasan ketersediaan tempat tidur.
+     * loading = spinner berputar
+     * error   = tanda -
+     * success = angka dari hasil API
+     */
+    function setBedsSummaryState(state) {
+        const elements = [
+            totalElement,
+            availableElement,
+            reservedElement,
+            occupiedElement,
+        ];
+
+        elements.forEach(element => {
+            if (!element) return;
+
+            if (state === 'loading') {
+                element.innerHTML = `
+                    <span class="rs-stat-loading"
+                        role="status"
+                        aria-label="Memuat data">
+                        <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+                    </span>
+                `;
+            } else if (state === 'error') {
+                element.textContent = '-';
+            }
+        });
+    }
 
     function renderSummary() {
         const total = allBeds.length;
@@ -453,7 +483,7 @@ function initKetersediaanTempatTidur() {
         if (destroyed) return;
 
         if (!apiUrl) {
-            showAlert('URL API ketersediaan tempat tidur tidak ditemukan.');
+            // showAlert('URL API ketersediaan tempat tidur tidak ditemukan.');
             return;
         }
 
@@ -467,13 +497,10 @@ function initKetersediaanTempatTidur() {
 
         requestController = new AbortController();
 
+        setBedsSummaryState('loading');
+
         try {
             hideAlert();
-
-            console.log(
-                '[Ketersediaan TT] Memanggil API:',
-                apiUrl
-            );
 
             const response = await fetch(apiUrl, {
                 method: 'GET',
@@ -512,14 +539,12 @@ function initKetersediaanTempatTidur() {
                 updatedAt.textContent =
                     `Diperbarui ${new Date().toLocaleTimeString('id-ID')}`;
             }
-
-            console.log(
-                `[Ketersediaan TT] Berhasil memuat ${allBeds.length} data.`
-            );
         } catch (error) {
             if (error.name === 'AbortError') {
                 return;
             }
+
+            setBedsSummaryState('error');
 
             console.error(
                 '[Ketersediaan TT] Gagal memuat data:',
@@ -527,7 +552,7 @@ function initKetersediaanTempatTidur() {
             );
 
             showAlert(
-                'Data tempat tidur gagal dimuat. Periksa koneksi API dan coba refresh kembali.'
+                'Data tempat tidur gagal dimuat. Periksa koneksi Internet dan coba refresh kembali.'
             );
 
             if (allBeds.length === 0 && tableBody) {

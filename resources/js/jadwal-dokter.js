@@ -54,6 +54,38 @@ function initJadwalDokter() {
     ];
 
     /**
+     * Mengatur tampilan statistik:
+     * loading = spinner berputar
+     * error   = tanda -
+     * success = angka statistik
+     */
+    function setStatsState(state) {
+        const elements = [
+            el.countDokter,
+            el.countPoli,
+            el.countTotal,
+        ];
+
+        elements.forEach(element => {
+            if (!element) return;
+
+            if (state === 'loading') {
+                element.innerHTML = `
+                    <span class="rs-stat-loading" role="status"
+                        aria-label="Memuat data">
+                        <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+                    </span>
+                `;
+                return;
+            }
+
+            if (state === 'error') {
+                element.textContent = '-';
+            }
+        });
+    }
+
+    /**
      * Membuat format YYYY-Www berdasarkan tanggal lokal.
      */
     function getCurrentIsoWeek() {
@@ -500,11 +532,16 @@ function initJadwalDokter() {
             return;
         }
 
+        // Batalkan request sebelumnya jika masih berjalan.
+        requestController?.abort();
+
+        const controller = new AbortController();
+
+        requestController = controller;
+
         const thisRequest = ++requestNumber;
 
-        // Batalkan request sebelumnya jika pengguna mengganti minggu.
-        requestController?.abort();
-        requestController = new AbortController();
+        setStatsState('loading');
 
         if (el.resultCount) {
             el.resultCount.textContent = 'Memuat jadwal dokter...';
@@ -543,11 +580,16 @@ function initJadwalDokter() {
                     Accept: 'application/json',
                     'X-Requested-With': 'XMLHttpRequest',
                 },
-                signal: requestController.signal,
+                signal: controller.signal,
                 cache: 'no-store',
             });
 
-            if (destroyed || requestController.signal.aborted) {
+            // Jangan memproses hasil request lama.
+            if (
+                destroyed ||
+                controller.signal.aborted ||
+                thisRequest !== requestNumber
+            ) {
                 return;
             }
 
@@ -555,7 +597,7 @@ function initJadwalDokter() {
 
             if (
                 destroyed ||
-                requestController.signal.aborted ||
+                controller.signal.aborted ||
                 thisRequest !== requestNumber
             ) {
                 return;
@@ -581,7 +623,7 @@ function initJadwalDokter() {
             applyFilters();
 
             if (result.warning) {
-                showAlert(result.warning, 'info');
+                // showAlert(result.warning, 'info');
             }
 
             if (el.lastUpdate) {
@@ -592,23 +634,27 @@ function initJadwalDokter() {
                     }).format(new Date())}`;
             }
         } catch (error) {
-            if (error.name === 'AbortError') {
+            // Pembatalan karena navigasi atau pergantian minggu bukan error.
+            if (
+                error.name === 'AbortError' ||
+                controller.signal.aborted ||
+                destroyed ||
+                thisRequest !== requestNumber
+            ) {
                 return;
             }
 
-            if (thisRequest !== requestNumber || destroyed) {
-                return;
-            }
+            setStatsState('error');
 
             allJadwal = [];
             filteredJadwal = [];
 
             renderStats();
 
-            showAlert(
-                error.message ||
-                'Jadwal dokter gagal dimuat. Silakan coba kembali.'
-            );
+            // showAlert(
+            //     error.message ||
+            //     'Jadwal dokter gagal dimuat. Silakan coba kembali.'
+            // );
 
             renderEmpty(
                 'Jadwal dokter tidak dapat dimuat',
@@ -629,6 +675,11 @@ function initJadwalDokter() {
 
             if (el.exportPdf) {
                 el.exportPdf.disabled = true;
+            }
+        } finally {
+            // Jangan menghapus controller milik request yang lebih baru.
+            if (requestController === controller) {
+                requestController = null;
             }
         }
     }

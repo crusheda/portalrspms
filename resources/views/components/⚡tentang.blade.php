@@ -60,7 +60,7 @@ class extends Component
                     </div>
 
                     <div>
-                        <strong>Pelayanan Kesehatan</strong>
+                        <strong>A . S . R . I</strong>
                         <span>Amanah, Santun, Ramah, Ikhlas</span>
                     </div>
                 </div>
@@ -79,8 +79,6 @@ class extends Component
                         <div class="rs-tentang-visual-icon">
                             <i class="bi bi-heart-pulse"></i>
                         </div>
-
-                        <span>RS PKU Muhammadiyah Sukoharjo</span>
 
                         <strong>
                             Kesembuhan Datangnya dari Allah,
@@ -119,7 +117,7 @@ class extends Component
                     <p>
                         Melalui portal ini, masyarakat dapat memperoleh
                         informasi mengenai rumah sakit, lokasi, layanan,
-                        dan kontak unit dengan lebih mudah.
+                        dan kontak dengan lebih mudah.
                     </p>
 
                     <div class="rs-tentang-highlight">
@@ -239,7 +237,7 @@ class extends Component
                 <h2>Lokasi Rumah Sakit</h2>
 
                 <p>
-                    Kunjungi RS PKU Muhammadiyah Sukoharjo.
+                    Kunjungi RS PKU Muhammadiyah Sukoharjo. <br>
                     Gunakan peta untuk melihat lokasi dan mendapatkan
                     petunjuk arah menuju rumah sakit.
                 </p>
@@ -403,13 +401,10 @@ class extends Component
                     Pusat Informasi
                 </div>
 
-                <h2>Kontak Unit Rumah Sakit</h2>
+                <h2>Hubungi Kami</h2>
 
                 <p>
-                    Butuh informasi lebih lanjut? Pilih unit yang sesuai
-                    dengan kebutuhan Anda. Untuk unit yang belum memiliki
-                    nomor kontak publik, silakan menghubungi Bagian
-                    Informasi Rumah Sakit agar diarahkan ke petugas terkait.
+                    Butuh informasi lebih lanjut? Silakan menghubungi bagian terkait.
                 </p>
             </div>
 
@@ -422,7 +417,6 @@ class extends Component
                 </div>
 
                 <div class="rs-tentang-main-contact-content">
-                    <span>Butuh bantuan atau informasi?</span>
 
                     <h3>Bagian Informasi Rumah Sakit</h3>
 
@@ -467,7 +461,7 @@ class extends Component
 
 
             {{-- DAFTAR UNIT --}}
-            <div class="rs-tentang-unit-grid">
+            <div class="rs-tentang-unit-grid" hidden>
 
                 {{-- INFORMASI --}}
                 <article class="rs-tentang-unit-card">
@@ -713,13 +707,10 @@ class extends Component
                 </a>
             </div>
 
-            <div class="rs-tentang-contact-disclaimer">
+            <div class="rs-tentang-contact-disclaimer" hidden>
                 <i class="bi bi-info-circle"></i>
 
                 <p>
-                    Nomor langsung Bagian Humas, Diklat, dan unit lainnya
-                    belum dicantumkan karena tidak tersedia dalam daftar
-                    kontak publik yang menjadi acuan halaman ini.
                     Silakan menghubungi Bagian Informasi RS untuk
                     mendapatkan arahan ke petugas yang sesuai.
                 </p>
@@ -730,7 +721,7 @@ class extends Component
 
 
     {{-- CALL TO ACTION --}}
-    <section class="rs-tentang-cta-section">
+    <section class="rs-tentang-cta-section" hidden>
         <div class="rs-container">
             <div class="rs-tentang-cta">
 

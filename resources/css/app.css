@@ -101,7 +101,7 @@ img {
 .rs-nav {
     display: flex;
     align-items: center;
-    gap: 24px;
+    /* gap: 24px; */
 }
 
 .rs-nav a {
@@ -573,7 +573,7 @@ img {
 .rs-footer p,
 .rs-footer a {
     color: #c3d4ca;
-    font-size: 11px;
+    font-size: 13px;
     line-height: 2;
 }
 

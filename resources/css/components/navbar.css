@@ -35,6 +35,10 @@
     background-color: rgba(25, 135, 84, 0.08);
 }
 
+.rs-nav-dropdown-menu-item {
+    margin-bottom: 8px;
+}
+
 /* BRAND */
 
 .rs-brand {
@@ -188,6 +192,58 @@
 .rs-nav-dropdown-menu > a.active {
     background: #eff8f2;
     color: #087f5b;
+}
+
+/* DROPDOWN MENU ITEM: LINK & BUTTON */
+
+.rs-nav-dropdown-menu > a,
+.rs-nav-dropdown-menu > button.rs-nav-dropdown-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: #42594e;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: left;
+    text-decoration: none;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+/* Hover hanya untuk item yang aktif */
+.rs-nav-dropdown-menu > a:hover,
+.rs-nav-dropdown-menu > a.active {
+    background: #eff8f2;
+    color: #087f5b;
+}
+
+/* Tombol rekrutmen yang disabled */
+.rs-nav-dropdown-menu > button.rs-nav-dropdown-menu-item:disabled {
+    opacity: 0.65;
+    color: #718078;
+    cursor: not-allowed;
+}
+
+/* Ikon tombol disabled */
+.rs-nav-dropdown-menu > button.rs-nav-dropdown-menu-item:disabled > i {
+    color: #849188;
+}
+
+/* Teks item disabled */
+.rs-nav-dropdown-menu > button.rs-nav-dropdown-menu-item:disabled
+.rs-dropdown-text strong {
+    color: #718078;
+}
+
+.rs-nav-dropdown-menu > button.rs-nav-dropdown-menu-item:disabled
+.rs-dropdown-text small {
+    color: #a0aaa3;
 }
 
 .rs-dropdown-icon {

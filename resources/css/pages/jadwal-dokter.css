@@ -380,6 +380,36 @@ button:disabled {
     animation: rsSpin .8s linear infinite
 }
 
+/* Spinner pada statistik jadwal dokter */
+.rs-stat-loading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    color: var(--rs-primary, #198754);
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.rs-stat-loading i {
+    display: inline-block;
+    animation: rs-stat-spin 0.8s linear infinite;
+}
+
+@keyframes rs-stat-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rs-stat-loading i {
+        animation: none;
+    }
+}
+
+
 @keyframes rsSpin {
     to {
         transform: rotate(360deg)

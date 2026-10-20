@@ -43,30 +43,30 @@ class extends Component {
 
             <div class="rs-beds-summary">
                 <article class="rs-beds-summary-card">
-                    <div class="rs-beds-summary-top"><span>Total Tempat Tidur</span><i class="bi bi-hospital"></i></div>
+                    <div class="rs-beds-summary-top"><span>Total</span><i class="bi bi-hospital"></i></div>
                     <strong id="ttTotal">—</strong>
-                    <small>Seluruh bed yang diterima dari API</small>
+                    <small>Seluruh bed Rumah Sakit</small>
                 </article>
                 <article class="rs-beds-summary-card available">
                     <div class="rs-beds-summary-top"><span>Tersedia</span><i class="bi bi-check-circle"></i></div>
                     <strong id="ttAvailable">—</strong>
-                    <small>Status API = 1</small>
+                    <small>Jumlah bed yang belum ditempati</small>
                 </article>
                 <article class="rs-beds-summary-card reserved">
                     <div class="rs-beds-summary-top"><span>Terpesan</span><i class="bi bi-calendar-check"></i></div>
                     <strong id="ttReserved">—</strong>
-                    <small>Status API = 2</small>
+                    <small>Jumlah bed yang akan ditempati</small>
                 </article>
                 <article class="rs-beds-summary-card occupied">
                     <div class="rs-beds-summary-top"><span>Terisi</span><i class="bi bi-person-fill"></i></div>
                     <strong id="ttOccupied">—</strong>
-                    <small>Status API = 3</small>
+                    <small>Jumlah bed yang telah terisi</small>
                 </article>
             </div>
 
             <div class="rs-occupancy-panel">
                 <div class="rs-occupancy-heading">
-                    <div><h3>Distribusi Status Tempat Tidur</h3><p>Proporsi dihitung dari seluruh data yang dikembalikan oleh API.</p></div>
+                    <div><h3>Distribusi Status Tempat Tidur</h3><p>Proporsi dihitung dari seluruh data hasil bridging tempat tidur.</p></div>
                     <strong id="ttPercent">—</strong>
                 </div>
                 <div class="rs-occupancy-track" id="ttOccupancyTrack" role="img" aria-label="Distribusi status tempat tidur">
@@ -79,7 +79,7 @@ class extends Component {
                     <span><i class="available-dot"></i> Tersedia (<b id="ttLegendAvailable">—</b>)</span>
                     <span><i class="reserved-dot"></i> Terpesan (<b id="ttLegendReserved">—</b>)</span>
                     <span><i class="occupied-dot"></i> Terisi (<b id="ttLegendOccupied">—</b>)</span>
-                    <span><i class="unknown-dot"></i> Lainnya (<b id="ttLegendUnknown">—</b>)</span>
+                    <span hidden><i class="unknown-dot"></i> Lainnya (<b id="ttLegendUnknown">—</b>)</span>
                 </div>
             </div>
 
@@ -100,7 +100,7 @@ class extends Component {
                             <option value="1">Bed Masih Tersedia</option>
                             <option value="2">Bed Telah Terpesan</option>
                             <option value="3">Bed Telah Terisi</option>
-                            <option value="other">Status lainnya</option>
+                            {{-- <option value="other">Status lainnya</option> --}}
                         </select>
                     </div>
                     <div class="rs-field">
@@ -110,7 +110,7 @@ class extends Component {
                 </div>
                 <div class="rs-bed-filter-footer">
                     <span id="ttResultCount" aria-live="polite">Memuat data...</span>
-                    <span>Refresh berikutnya dalam <strong id="ttCountdown">60</strong> detik</span>
+                    <span>Refresh data berikutnya dalam <strong id="ttCountdown">60</strong> detik</span>
                 </div>
             </div>
 
@@ -136,7 +136,7 @@ class extends Component {
 
             <div class="rs-disclaimer">
                 <i class="bi bi-info-circle"></i>
-                <p><strong>Informasi:</strong> Status mengikuti kode dari endpoint rumah sakit: 1 = tersedia, 2 = terpesan, dan 3 = terisi sebagaimana implementasi halaman lama. Data diperbarui otomatis setiap 60 detik. Ketersediaan dapat berubah sewaktu-waktu dan bukan konfirmasi pemesanan tempat tidur.</p>
+                <p><strong>Informasi:</strong> Data diperbarui otomatis setiap 60 detik. Ketersediaan dapat berubah sewaktu-waktu.</p>
             </div>
         </div>
     </section>

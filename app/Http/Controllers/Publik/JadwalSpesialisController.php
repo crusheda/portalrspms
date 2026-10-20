@@ -173,50 +173,111 @@ class JadwalSpesialisController extends Controller
      * Endpoint AJAX untuk jadwal mingguan seluruh poli.
      * Query parameter: ?week=2026-W42
      */
-    public function jadwalMingguanAllPoli(Request $request): JsonResponse
+    public function jadwalMingguanAllPoli(Request $request)
     {
-        $week = (string) $request->query('week', Carbon::now('Asia/Jakarta')->format('o-\WW'));
+        $week = $request->input('week', now()->format('o-\WW'));
 
-        try {
-            $period = $this->resolveIsoWeek($week);
-            $result = $this->getAllPoliForWeek(
-                $week,
-                $period['year'],
-                $period['week'],
-                $period['start'],
-                $period['end']
-            );
+        if (!preg_match('/^(\d{4})-W(\d{2})$/', $week, $matches)) {
+            return response()->json([
+                'message' => 'Format minggu tidak valid.',
+            ], 422);
+        }
 
-            if (empty($result['data']) && ($result['failed_requests'] ?? 0) >= count(self::KODE_POLI) * 7) {
-                return response()->json([
-                    'message' => 'Seluruh permintaan jadwal ke BPJS gagal. Periksa koneksi, kredensial, signature, dan konfigurasi layanan BPJS.',
-                    'response' => [],
-                ], 502);
+        $year = (int) $matches[1];
+        $weekNum = (int) $matches[2];
+
+        if ($weekNum < 1 || $weekNum > 53) {
+            return response()->json([
+                'message' => 'Nomor minggu tidak valid.',
+            ], 422);
+        }
+
+        $start = Carbon::now()
+            ->setISODate($year, $weekNum)
+            ->startOfWeek(Carbon::MONDAY);
+
+        // Pastikan tahun dan minggu ISO benar-benar valid.
+        if (
+            (int) $start->format('o') !== $year ||
+            (int) $start->format('W') !== $weekNum
+        ) {
+            return response()->json([
+                'message' => 'Minggu yang dipilih tidak valid.',
+            ], 422);
+        }
+
+        $end = $start->copy()->endOfWeek(Carbon::SUNDAY);
+
+        $cacheKey = "jadwal_mingguan_{$year}_{$weekNum}";
+
+        $allData = Cache::remember($cacheKey, 300, function () use ($start, $end) {
+            $polis = [
+                'IGD', 'ANA', 'BED', 'GIG', 'INT', 'IRM',
+                'JAN', 'JIW', 'KLT', 'MAT', 'THT', 'OBG',
+                'ORT', 'PAR', 'SAR', 'URO', 'ANT', 'KON',
+            ];
+
+            $data = [];
+
+            foreach ($polis as $poli) {
+                for (
+                    $date = $start->copy();
+                    $date->lte($end);
+                    $date->addDay()
+                ) {
+                    $tgl = $date->format('Y-m-d');
+
+                    $url = "jadwaldokter/kodepoli/{$poli}/tanggal/{$tgl}";
+
+                    $result = $this->bpjs->serviceGet($url);
+
+                    if (empty($result->response)) {
+                        continue;
+                    }
+
+                    $decrypt = $this->bpjs->stringDecrypt(
+                        $result->response
+                    );
+
+                    $rows = json_decode($decrypt, true);
+
+                    if (!is_array($rows)) {
+                        continue;
+                    }
+
+                    foreach ($rows as $row) {
+                        if (!is_array($row)) {
+                            continue;
+                        }
+
+                        $row['tanggal'] = $tgl;
+                        $data[] = $row;
+                    }
+                }
             }
 
-            return response()->json([
-                'response' => $result['data'] ?? [],
-                'week' => $week,
-                'warning' => !empty($result['failed_requests'])
-                    ? 'Sebagian permintaan jadwal ke BPJS gagal. Data yang berhasil diambil tetap ditampilkan.'
-                    : null,
-            ]);
-        } catch (InvalidArgumentException $e) {
-            return response()->json([
-                'message' => $e->getMessage(),
-                'response' => [],
-            ], 422);
-        } catch (Throwable $e) {
-            Log::error('Gagal mengambil jadwal mingguan seluruh poli.', [
-                'week' => $week,
-                'exception' => $e->getMessage(),
-            ]);
+            usort($data, function ($a, $b) {
+                $poliCompare = strcmp(
+                    (string) ($a['namasubspesialis'] ?? ''),
+                    (string) ($b['namasubspesialis'] ?? '')
+                );
 
-            return response()->json([
-                'message' => 'Gagal mengambil jadwal dari layanan BPJS. Periksa log aplikasi untuk detail teknis.',
-                'response' => [],
-            ], 502);
-        }
+                if ($poliCompare !== 0) {
+                    return $poliCompare;
+                }
+
+                return strcmp(
+                    (string) ($a['namadokter'] ?? ''),
+                    (string) ($b['namadokter'] ?? '')
+                );
+            });
+
+            return $data;
+        });
+
+        return response()->json([
+            'response' => $allData,
+        ]);
     }
 
     /**

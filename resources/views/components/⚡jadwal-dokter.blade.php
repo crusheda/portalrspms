@@ -40,15 +40,15 @@ class extends Component {
             <div class="rs-schedule-stats">
                 <div class="rs-schedule-stat">
                     <span class="rs-stat-icon"><i class="bi bi-person-badge"></i></span>
-                    <div><small>Dokter pada minggu ini</small><strong id="jadwal-count-dokter">—</strong></div>
+                    <div><small>Dokter Pada Minggu Ini</small><strong id="jadwal-count-dokter">—</strong></div>
                 </div>
                 <div class="rs-schedule-stat">
                     <span class="rs-stat-icon"><i class="bi bi-hospital"></i></span>
-                    <div><small>Poliklinik ditemukan</small><strong id="jadwal-count-poli">—</strong></div>
+                    <div><small>Poliklinik</small><strong id="jadwal-count-poli">—</strong></div>
                 </div>
                 <div class="rs-schedule-stat">
                     <span class="rs-stat-icon"><i class="bi bi-calendar-check"></i></span>
-                    <div><small>Jadwal praktik</small><strong id="jadwal-count-total">—</strong></div>
+                    <div><small>Jadwal Praktik</small><strong id="jadwal-count-total">—</strong></div>
                 </div>
             </div>
 
@@ -97,7 +97,7 @@ class extends Component {
 
             <div class="rs-table-card">
                 <div class="rs-table-heading">
-                    <div><h3>Daftar Jadwal Praktik</h3><p>Hasil mengikuti minggu yang dipilih dan filter aktif.</p></div>
+                    <div><h3>Daftar Jadwal Praktik</h3><p>Hasil di bawah mengikuti minggu yang dipilih dan filter aktif.</p></div>
                     <span class="rs-source-chip"><i class="bi bi-shield-check"></i> Integrasi BPJS</span>
                 </div>
                 <div class="table-responsive">
@@ -129,7 +129,7 @@ class extends Component {
 
             <div class="rs-disclaimer">
                 <i class="bi bi-info-circle"></i>
-                <p><strong>Informasi:</strong> Jadwal berasal dari data integrasi BPJS yang disediakan oleh endpoint aplikasi. Jadwal dapat berubah. Pastikan jadwal sebelum berkunjung melalui kanal resmi rumah sakit.</p>
+                <p><strong>Informasi:</strong> Jadwal berasal dari data integrasi BPJS dengan Sistem RS. <br>Jadwal dapat berubah sewaktu-waktu, mohon dapat memastikan jadwal praktik dokter sebelum berkunjung melalui kanal resmi rumah sakit.</p>
             </div>
         </div>
     </section>

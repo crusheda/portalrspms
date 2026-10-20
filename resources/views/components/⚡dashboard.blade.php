@@ -184,7 +184,6 @@ class extends Component {};
          MITRA
     ========================================== --}}
     <section class="rs-home-partners">
-
         <div class="rs-container">
 
             <div class="rs-home-section-label">
@@ -192,41 +191,67 @@ class extends Component {};
             </div>
 
             <p class="rs-home-partners-description">
-                Berkolaborasi untuk mendukung pelayanan kesehatan masyarakat.
+                Berkolaborasi dengan berbagai mitra untuk mendukung pelayanan
+                kesehatan yang berkualitas bagi masyarakat.
             </p>
 
-            <div class="rs-home-partners-grid">
+            <div class="rs-home-partners-track-wrapper">
+                <div class="rs-home-partners-track">
 
-                <div class="rs-home-partner">
-                    <img src="{{ asset('img/mitra/bpjskes.jpg') }}" alt="BPJS Kesehatan" loading="lazy">
+                    @php
+                        $mitra = [
+                            ['file' => 'bpjskes.jpg', 'nama' => 'BPJS Kesehatan', 'width' => 120],
+                            ['file' => 'bpjsnaker.jpg', 'nama' => 'BPJS Ketenagakerjaan', 'width' => 120],
+                            ['file' => 'taspen.png', 'nama' => 'Taspen', 'width' => 100],
+                            ['file' => 'brilife.jpg', 'nama' => 'BRI Life', 'width' => 100],
+                            ['file' => 'admedika.jpg', 'nama' => 'AdMedika', 'width' => 100],
+                            ['file' => 'alodokter.jpg', 'nama' => 'Alodokter', 'width' => 100],
+                            ['file' => 'arah.jpg', 'nama' => 'ARAH', 'width' => 100],
+                            ['file' => 'kkp.jpg', 'nama' => 'KKP', 'width' => 90],
+                            ['file' => 'bjs.jpg', 'nama' => 'BJS', 'width' => 100],
+                            ['file' => 'iforte.jpg', 'nama' => 'iForte', 'width' => 100],
+                            ['file' => 'indihome.jpg', 'nama' => 'IndiHome', 'width' => 100],
+                            ['file' => 'jr.jpg', 'nama' => 'Jasa Raharja', 'width' => 100],
+                            ['file' => 'lazismu.jpg', 'nama' => 'Lazismu', 'width' => 100],
+                            ['file' => 'mdmc.jpg', 'nama' => 'MDMC', 'width' => 100],
+                            ['file' => 'pmi.jpg', 'nama' => 'PMI', 'width' => 100],
+                            ['file' => 'pos.jpg', 'nama' => 'Pos Indonesia', 'width' => 100],
+                            ['file' => 'suryamedika.jpg', 'nama' => 'Surya Medika', 'width' => 120],
+                            ['file' => 'telkom.jpg', 'nama' => 'Telkom', 'width' => 100],
+                            ['file' => 'tirtamakmur.jpg', 'nama' => 'Tirta Makmur', 'width' => 80],
+                            ['file' => 'kai.png', 'nama' => 'Kereta Api Indonesia', 'width' => 60],
+                        ];
+                    @endphp
+
+                    {{-- Daftar pertama --}}
+                    @foreach ($mitra as $item)
+                        <div class="rs-home-partner">
+                            <img
+                                src="{{ asset('img/mitra/' . $item['file']) }}"
+                                alt="{{ $item['nama'] }}"
+                                width="{{ $item['width'] }}"
+                                loading="lazy"
+                            >
+                        </div>
+                    @endforeach
+
+                    {{-- Duplikasi untuk membuat animasi berulang tanpa jeda --}}
+                    @foreach ($mitra as $item)
+                        <div class="rs-home-partner" aria-hidden="true">
+                            <img
+                                src="{{ asset('img/mitra/' . $item['file']) }}"
+                                alt=""
+                                width="{{ $item['width'] }}"
+                                loading="lazy"
+                            >
+                        </div>
+                    @endforeach
+
                 </div>
-
-                <div class="rs-home-partner">
-                    <img src="{{ asset('img/mitra/bpjsnaker.jpg') }}" alt="BPJS Ketenagakerjaan" loading="lazy">
-                </div>
-
-                <div class="rs-home-partner">
-                    <img src="{{ asset('img/mitra/taspen.png') }}" alt="Taspen" loading="lazy">
-                </div>
-
-                <div class="rs-home-partner">
-                    <img src="{{ asset('img/mitra/brilife.jpg') }}" alt="BRI Life" loading="lazy">
-                </div>
-
-                <div class="rs-home-partner">
-                    <img src="{{ asset('img/mitra/admedika.jpg') }}" alt="AdMedika" loading="lazy">
-                </div>
-
-                <div class="rs-home-partner">
-                    <img src="{{ asset('img/mitra/alodokter.jpg') }}" alt="Alodokter" loading="lazy">
-                </div>
-
             </div>
 
         </div>
-
     </section>
-
 
     {{-- =========================================
          KEUNGGULAN PELAYANAN
@@ -404,91 +429,109 @@ class extends Component {};
 
     </section>
 
-
     {{-- =========================================
-         GALERI PELAYANAN
+        FASILITAS DAN PELAYANAN
     ========================================== --}}
     <section class="rs-home-section rs-home-services">
 
         <div class="rs-container">
 
-            <div class="rs-home-services-grid">
+            {{-- BAGIAN 1: KOMITMEN PELAYANAN --}}
+            <div class="rs-service-feature">
 
-                <div class="rs-home-services-gallery">
-
-                    <figure class="rs-home-gallery-main">
+                <div class="rs-service-feature-gallery">
+                    <div class="rs-service-photo rs-service-photo-main">
                         <img
                             src="{{ asset('img/pelayanan/poli2.jpg') }}"
-                            alt="Fasilitas poliklinik"
+                            alt="Fasilitas poliklinik RS PKU Muhammadiyah Sukoharjo"
                             loading="lazy"
                         >
-                    </figure>
+                        <span class="rs-service-photo-caption">
+                            <i class="bi bi-heart-pulse"></i>
+                            Pelayanan Poliklinik
+                        </span>
+                    </div>
 
-                    <figure class="rs-home-gallery-secondary">
+                    <div class="rs-service-photo rs-service-photo-secondary">
+                        <img
+                            src="{{ asset('img/pelayanan/poli4.jpg') }}"
+                            alt="Ruang pelayanan poliklinik"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div class="rs-service-photo rs-service-photo-tertiary">
                         <img
                             src="{{ asset('img/pelayanan/icu.jpg') }}"
                             alt="Fasilitas perawatan intensif"
                             loading="lazy"
                         >
-                    </figure>
+                    </div>
 
-                    <figure class="rs-home-gallery-tertiary">
-                        <img
-                            src="{{ asset('img/pelayanan/lab2.jpg') }}"
-                            alt="Fasilitas laboratorium"
-                            loading="lazy"
-                        >
-                    </figure>
-
+                    <div class="rs-service-gallery-decoration" aria-hidden="true">
+                        <i class="bi bi-plus-lg"></i>
+                    </div>
                 </div>
 
-                <div class="rs-home-services-content">
+                <div class="rs-service-feature-content">
 
                     <span class="rs-home-section-label">
-                        FASILITAS DAN PELAYANAN
+                        <i class="bi bi-heart-pulse"></i>
+                        KOMITMEN PELAYANAN
                     </span>
 
                     <h2>
-                        Mendampingi perjalanan
-                        <span>kesehatan Anda.</span>
+                        Hadir untuk kesehatan,
+                        <span>peduli sepenuh hati.</span>
                     </h2>
 
                     <p>
-                        Kami berupaya memberikan pelayanan kesehatan yang
-                        tepat dan responsif sesuai kebutuhan pasien,
-                        mulai dari pemeriksaan hingga perawatan lanjutan.
+                        RS PKU Muhammadiyah Sukoharjo berupaya memberikan
+                        pelayanan kesehatan yang profesional, ramah, dan
+                        responsif sesuai kebutuhan pasien. Kami berkomitmen
+                        mendampingi setiap langkah menuju kesehatan yang lebih baik.
                     </p>
 
-                    <div class="rs-home-service-list">
+                    <div class="rs-service-benefits">
 
-                        <div>
-                            <i class="bi bi-check-circle-fill"></i>
-                            <span>Pelayanan medis umum</span>
+                        <div class="rs-service-benefit">
+                            <span class="rs-service-benefit-icon">
+                                <i class="bi bi-shield-check"></i>
+                            </span>
+                            <div>
+                                <h3>Pelayanan Profesional</h3>
+                                <p>Didukung tenaga medis dan tenaga kesehatan yang kompeten.</p>
+                            </div>
                         </div>
 
-                        <div>
-                            <i class="bi bi-check-circle-fill"></i>
-                            <span>Poliklinik spesialis</span>
+                        <div class="rs-service-benefit">
+                            <span class="rs-service-benefit-icon">
+                                <i class="bi bi-people"></i>
+                            </span>
+                            <div>
+                                <h3>Ramah dan Peduli</h3>
+                                <p>Mengutamakan sikap santun, kepedulian, dan kenyamanan pasien.</p>
+                            </div>
                         </div>
 
-                        <div>
-                            <i class="bi bi-check-circle-fill"></i>
-                            <span>Pelayanan gawat darurat</span>
+                        <div class="rs-service-benefit">
+                            <span class="rs-service-benefit-icon">
+                                <i class="bi bi-heart"></i>
+                            </span>
+                            <div>
+                                <h3>Pelayanan Menyeluruh</h3>
+                                <p>Mendukung kebutuhan kesehatan mulai dari pemeriksaan hingga perawatan.</p>
+                            </div>
                         </div>
 
-                        <div>
-                            <i class="bi bi-check-circle-fill"></i>
-                            <span>Rawat inap</span>
-                        </div>
-
-                        <div>
-                            <i class="bi bi-check-circle-fill"></i>
-                            <span>Laboratorium</span>
-                        </div>
-
-                        <div>
-                            <i class="bi bi-check-circle-fill"></i>
-                            <span>Radiologi</span>
+                        <div class="rs-service-benefit">
+                            <span class="rs-service-benefit-icon">
+                                <i class="bi bi-credit-card-2-front"></i>
+                            </span>
+                            <div>
+                                <h3>Layanan BPJS</h3>
+                                <p>Melayani pasien BPJS sesuai ketentuan dan prosedur yang berlaku.</p>
+                            </div>
                         </div>
 
                     </div>
@@ -506,10 +549,385 @@ class extends Component {};
 
             </div>
 
+
+            {{-- BAGIAN 2: FASILITAS RAWAT INAP --}}
+            <div class="rs-service-feature rs-service-feature-inpatient">
+
+                <div class="rs-service-feature-gallery rs-service-inpatient-gallery">
+
+                    <div class="rs-service-photo rs-service-inpatient-photo-one">
+                        <img
+                            src="{{ asset('img/pelayanan/ranapkls3_2.jpg') }}"
+                            alt="Fasilitas kamar rawat inap"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div class="rs-service-photo rs-service-inpatient-photo-two">
+                        <img
+                            src="{{ asset('img/pelayanan/ranapvip.jpg') }}"
+                            alt="Fasilitas kamar rawat inap VIP"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div class="rs-service-photo rs-service-inpatient-photo-three">
+                        <img
+                            src="{{ asset('img/pelayanan/ranapkls3.jpg') }}"
+                            alt="Ruang perawatan pasien"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div class="rs-service-photo rs-service-inpatient-photo-four">
+                        <img
+                            src="{{ asset('img/pelayanan/ranapkls1_2.jpg') }}"
+                            alt="Fasilitas ruang rawat inap"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div class="rs-service-gallery-note">
+                        <span class="rs-service-gallery-note-icon">
+                            <i class="bi bi-house-heart"></i>
+                        </span>
+                        <div>
+                            <strong>Nyaman untuk Pemulihan</strong>
+                            <span>Lingkungan perawatan yang mendukung proses penyembuhan.</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="rs-service-feature-content">
+
+                    <span class="rs-home-section-label">
+                        <i class="bi bi-hospital"></i>
+                        FASILITAS RAWAT INAP
+                    </span>
+
+                    <h2>
+                        Ruang perawatan yang
+                        <span>mendukung pemulihan.</span>
+                    </h2>
+
+                    <p>
+                        Kami berupaya menghadirkan lingkungan perawatan yang
+                        bersih, nyaman, dan mendukung kebutuhan pasien selama
+                        menjalani perawatan. Pilihan ruang perawatan disesuaikan
+                        dengan ketersediaan fasilitas dan ketentuan yang berlaku.
+                    </p>
+
+                    <div class="rs-service-ward-list">
+
+                        <div class="rs-service-ward-item">
+                            <span><i class="bi bi-check2"></i></span>
+                            <div>
+                                <strong>Bangsal Kebidanan</strong>
+                                <small>Perawatan terkait kesehatan ibu.</small>
+                            </div>
+                        </div>
+
+                        <div class="rs-service-ward-item">
+                            <span><i class="bi bi-check2"></i></span>
+                            <div>
+                                <strong>Bangsal Anak</strong>
+                                <small>Perawatan bagi pasien anak.</small>
+                            </div>
+                        </div>
+
+                        <div class="rs-service-ward-item">
+                            <span><i class="bi bi-check2"></i></span>
+                            <div>
+                                <strong>Bangsal Dewasa</strong>
+                                <small>Fasilitas perawatan pasien dewasa.</small>
+                            </div>
+                        </div>
+
+                        <div class="rs-service-ward-item">
+                            <span><i class="bi bi-check2"></i></span>
+                            <div>
+                                <strong>Ruang Isolasi</strong>
+                                <small>Ruang perawatan sesuai indikasi medis.</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="{{ route('ketersediaan-tempat-tidur') }}"
+                        wire:navigate
+                        class="rs-home-text-link"
+                    >
+                        Lihat Ketersediaan Tempat Tidur
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            {{-- BAGIAN 3: BERBAGAI LAYANAN KESEHATAN --}}
+            <div class="rs-service-feature rs-service-feature-last">
+
+                <div class="rs-service-feature-gallery rs-service-medical-gallery">
+
+                    <div class="rs-service-photo rs-service-medical-photo-main">
+                        <img
+                            src="{{ asset('img/pelayanan/lab2.jpg') }}"
+                            alt="Fasilitas laboratorium"
+                            loading="lazy"
+                        >
+                        <span class="rs-service-photo-caption">
+                            <i class="bi bi-eyedropper"></i>
+                            Laboratorium
+                        </span>
+                    </div>
+
+                    <div class="rs-service-photo rs-service-medical-photo-secondary">
+                        <img
+                            src="{{ asset('img/pelayanan/poli33.jpg') }}"
+                            alt="Fasilitas pelayanan medis"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div class="rs-service-photo rs-service-medical-photo-tertiary">
+                        <img
+                            src="{{ asset('img/pelayanan/radiologi.jpg') }}"
+                            alt="Fasilitas radiologi"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div class="rs-service-medical-badge">
+                        <i class="bi bi-clipboard2-pulse"></i>
+                        <span>
+                            <strong>Terintegrasi</strong>
+                            <small>Beragam kebutuhan pelayanan medis</small>
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="rs-service-feature-content">
+
+                    <span class="rs-home-section-label">
+                        <i class="bi bi-activity"></i>
+                        LAYANAN KESEHATAN
+                    </span>
+
+                    <h2>
+                        Berbagai layanan untuk
+                        <span>kebutuhan kesehatan Anda.</span>
+                    </h2>
+
+                    <p>
+                        Dari pemeriksaan kesehatan hingga tindakan medis,
+                        berbagai layanan disediakan untuk mendukung kebutuhan
+                        pasien. Setiap pelayanan diberikan sesuai indikasi medis,
+                        kebutuhan pasien, dan fasilitas yang tersedia.
+                    </p>
+
+                    <div class="rs-service-catalog">
+
+                        <div class="rs-service-catalog-item">
+                            <span><i class="bi bi-person-heart"></i></span>
+                            <div>
+                                <strong>Pelayanan Medis Umum</strong>
+                                <small>Pemeriksaan dan konsultasi kesehatan.</small>
+                            </div>
+                        </div>
+
+                        <div class="rs-service-catalog-item">
+                            <span><i class="bi bi-person-badge"></i></span>
+                            <div>
+                                <strong>Poliklinik Spesialis</strong>
+                                <small>Pelayanan sesuai bidang spesialisasi medis.</small>
+                            </div>
+                        </div>
+
+                        <div class="rs-service-catalog-item">
+                            <span><i class="bi bi-droplet-half"></i></span>
+                            <div>
+                                <strong>Laboratorium</strong>
+                                <small>Pemeriksaan penunjang untuk kebutuhan medis.</small>
+                            </div>
+                        </div>
+
+                        <div class="rs-service-catalog-item">
+                            <span><i class="bi bi-radioactive"></i></span>
+                            <div>
+                                <strong>Radiologi</strong>
+                                <small>Pemeriksaan penunjang melalui pencitraan medis.</small>
+                            </div>
+                        </div>
+
+                        <div class="rs-service-catalog-item">
+                            <span><i class="bi bi-hospital"></i></span>
+                            <div>
+                                <strong>Rawat Inap dan Intensif</strong>
+                                <small>Perawatan sesuai kondisi dan kebutuhan pasien.</small>
+                            </div>
+                        </div>
+
+                        <div class="rs-service-catalog-item">
+                            <span><i class="bi bi-activity"></i></span>
+                            <div>
+                                <strong>Gawat Darurat (IGD)</strong>
+                                <small>Penanganan awal kondisi kegawatdaruratan.</small>
+                            </div>
+                        </div>
+
+                        <div class="rs-service-catalog-item">
+                            <span><i class="bi bi-heart-pulse"></i></span>
+                            <div>
+                                <strong>Kamar Operasi dan Bedah</strong>
+                                <small>Tindakan operasi sesuai indikasi medis.</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="{{ route('profil-rs') }}"
+                        wire:navigate
+                        class="rs-home-text-link"
+                    >
+                        Jelajahi Profil dan Layanan Kami
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
 
     </section>
 
+    {{-- =========================================
+        VIDEO PROFIL RUMAH SAKIT
+    ========================================== --}}
+    <section class="rs-home-section rs-home-video">
+
+        <div class="rs-container">
+
+            <div class="rs-home-video-heading">
+                <span class="rs-home-section-label">
+                    <i class="bi bi-play-circle"></i>
+                    VIDEO PROFIL RS
+                </span>
+
+                <h2>
+                    Mengenal lebih dekat
+                    <span>rumah sakit kami.</span>
+                </h2>
+
+                <p>
+                    Kenali lingkungan, fasilitas, dan komitmen pelayanan
+                    RS PKU Muhammadiyah Sukoharjo melalui video profil rumah sakit kami.
+                </p>
+            </div>
+
+            <div class="rs-home-video-preview">
+
+                <img
+                    src="{{ asset('media/thumbnail.jpg') }}"
+                    alt="Video profil RS PKU Muhammadiyah Sukoharjo"
+                    loading="lazy"
+                >
+
+                <div class="rs-home-video-overlay"></div>
+
+                <div class="rs-home-video-preview-content">
+                    <span class="rs-home-video-tag">
+                        <i class="bi bi-hospital"></i>
+                        RS PKU Muhammadiyah Sukoharjo
+                    </span>
+
+                    <h3>
+                        Melayani dengan sepenuh hati,
+                        untuk kesehatan yang lebih baik.
+                    </h3>
+
+                    <button
+                        type="button"
+                        class="rs-home-video-play"
+                        data-bs-toggle="modal"
+                        data-bs-target="#rsProfileVideoModal"
+                        aria-label="Putar video profil rumah sakit"
+                    >
+                        <span class="rs-home-video-play-icon">
+                            <i class="bi bi-play-fill"></i>
+                        </span>
+                        <span>Putar Video Profil RS</span>
+                    </button>
+                </div>
+
+                <span class="rs-home-video-corner-icon" aria-hidden="true">
+                    <i class="bi bi-play-circle"></i>
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {{-- MODAL VIDEO PROFIL --}}
+    <div
+        class="modal fade rs-profile-video-modal"
+        id="rsProfileVideoModal"
+        tabindex="-1"
+        aria-labelledby="rsProfileVideoModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <div>
+                        <span class="rs-profile-video-modal-label">
+                            VIDEO PROFIL
+                        </span>
+
+                        <h5 class="modal-title" id="rsProfileVideoModalLabel">
+                            RS PKU Muhammadiyah Sukoharjo
+                        </h5>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"
+                        aria-label="Tutup video"
+                    ></button>
+                </div>
+
+                <div class="modal-body">
+                    <video
+                        id="rsProfileVideo"
+                        class="rs-profile-video-player"
+                        controls
+                        playsinline
+                        preload="none"
+                        poster="{{ asset('media/thumbnail.jpg') }}"
+                    >
+                        <source
+                            src="{{ asset('media/profil.mp4') }}"
+                            type="video/mp4"
+                        >
+
+                        Browser Anda tidak mendukung pemutaran video.
+                    </video>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     {{-- =========================================
          POSTER KESEHATAN

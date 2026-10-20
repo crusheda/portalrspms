@@ -244,7 +244,7 @@ class extends Component
                         <i class="bi bi-clock-history"></i>
                         Telusuri Sejarah
                     </a>
-                    <a href="#dokumen-rs" class="rs-profile-button rs-profile-button-glass">
+                    <a href="#dokumen-rs" class="rs-profile-button rs-profile-button-glass" hidden>
                         <i class="bi bi-file-earmark-arrow-down"></i>
                         Dokumen Rumah Sakit
                     </a>
@@ -359,19 +359,11 @@ class extends Component
             <div class="rs-profile-identity-grid">
                 <article class="rs-profile-info-card" data-profile-reveal>
                     <span class="rs-profile-info-icon"><i class="bi bi-hospital"></i></span>
-                    <div><small>Nama Institusi</small><h3>RS PKU Muhammadiyah Sukoharjo</h3><p>Rumah sakit di bawah naungan Pimpinan Daerah Muhammadiyah Kabupaten Sukoharjo.</p></div>
+                    <div><small>Institusi</small><h3>RS PKU Muhammadiyah Sukoharjo</h3><p>Rumah Sakit Umum tipe C yang berada di bawah naungan Pimpinan Daerah Muhammadiyah Kabupaten Sukoharjo.</p></div>
                 </article>
                 <article class="rs-profile-info-card" data-profile-reveal>
                     <span class="rs-profile-info-icon"><i class="bi bi-geo-alt"></i></span>
-                    <div><small>Alamat</small><h3>Jl. Mayor Sunaryo No. 37</h3><p>Kabupaten Sukoharjo, Provinsi Jawa Tengah.</p></div>
-                </article>
-                <article class="rs-profile-info-card" data-profile-reveal>
-                    <span class="rs-profile-info-icon"><i class="bi bi-buildings"></i></span>
-                    <div><small>Klasifikasi dalam dokumen lama</small><h3>Rumah Sakit Umum Kelas C</h3><p>Data ini tercantum dalam profil lama; pembaruan mengikuti dokumen resmi terbaru.</p></div>
-                </article>
-                <article class="rs-profile-info-card" data-profile-reveal>
-                    <span class="rs-profile-info-icon"><i class="bi bi-stars"></i></span>
-                    <div><small>Tata Nilai</small><h3>ASRI</h3><p>Amanah, Santun, Ramah, dan Ikhlas sebagai nilai pelayanan rumah sakit.</p></div>
+                    <div><small>Alamat</small><h3>Jl. Mayor Sunaryo No. 37, Sukoharjo, Jawa Tengah</h3><p>Lokasi strategis berada di pusat Kabupaten Sukoharjo, sehingga mudah dijangkau oleh masyarakat.</p></div>
                 </article>
             </div>
         </div>
@@ -454,10 +446,8 @@ class extends Component
                 <div class="rs-section-label">Perjalanan dan Perkembangan</div>
                 <h2>Sejarah RS PKU Muhammadiyah Sukoharjo</h2>
                 <p>
-                    Menelusuri perjalanan dari wakaf tanah hingga perkembangan
-                    layanan dan fasilitas rumah sakit. Linimasa berikut disusun
-                    berdasarkan informasi pada profil lama dan perlu diperbarui
-                    jika terdapat dokumen resmi yang lebih mutakhir.
+                    Menelusuri perjalanan Rumah Sakit dari wakaf tanah hingga perkembangan
+                    layanan dan fasilitas yang modern saat ini. Linimasa diperbarui secara berkala.
                 </p>
             </div>
 
@@ -494,17 +484,6 @@ class extends Component
                     </article>
                 @endforeach
             </div>
-
-            <div class="rs-profile-history-note" data-profile-reveal>
-                <i class="bi bi-info-circle"></i>
-                <p>
-                    <strong>Catatan pembaruan data:</strong> beberapa nomor
-                    perizinan, status pembangunan, dan status akreditasi di atas
-                    mengikuti informasi dari halaman profil lama. Sebelum
-                    dipublikasikan sebagai informasi resmi, cocokkan kembali
-                    dengan dokumen terbaru yang dimiliki rumah sakit.
-                </p>
-            </div>
         </div>
     </section>
 
@@ -514,7 +493,6 @@ class extends Component
             <div class="rs-profile-section-heading" data-profile-reveal>
                 <div class="rs-section-label">Kepemimpinan</div>
                 <h2>Jajaran Direksi</h2>
-                <p>Nama dan jabatan ditampilkan mengikuti data pada template profil lama. Perbarui apabila ada perubahan susunan direksi.</p>
             </div>
 
             <div class="rs-profile-leadership-grid">
@@ -574,7 +552,7 @@ class extends Component
     </section>
 
     {{-- DOKUMEN PENTING --}}
-    <section class="rs-section rs-section-soft rs-profile-documents" id="dokumen-rs">
+    <section class="rs-section rs-section-soft rs-profile-documents" id="dokumen-rs" hidden>
         <div class="rs-container">
             <div class="rs-profile-documents-header" data-profile-reveal>
                 <div>

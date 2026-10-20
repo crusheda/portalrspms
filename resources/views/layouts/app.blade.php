@@ -146,7 +146,7 @@
                                 href="{{ route('jadwal-dokter') }}"
                                 wire:navigate
                                 @class([
-                                    'rs-nav-dropdown-item',
+                                    'rs-nav-dropdown-menu-item','rs-nav-dropdown-item',
                                     'active' => request()->routeIs('jadwal-dokter'),
                                 ])
                                 @if(request()->routeIs('jadwal-dokter'))
@@ -166,7 +166,7 @@
                                 href="{{ route('ketersediaan-tempat-tidur') }}"
                                 wire:navigate
                                 @class([
-                                    'rs-nav-dropdown-item',
+                                    'rs-nav-dropdown-menu-item','rs-nav-dropdown-item',
                                     'active' => request()->routeIs('ketersediaan-tempat-tidur'),
                                 ])
                                 @if(request()->routeIs('ketersediaan-tempat-tidur'))
@@ -180,6 +180,80 @@
                                     <small>Lihat Ketersediaan Tempat Tidur</small>
                                 </span>
                             </a>
+
+                        </div>
+                    </div>
+
+                    {{-- Dropdown Rekrutmen --}}
+                    <div
+                        id="rsRecruitmentDropdown"
+                        @class([
+                            'rs-nav-dropdown',
+                            'is-active' => request()->routeIs(
+                                'rekrutmen.pengumuman',
+                                'rekrutmen.registrasi',
+                                'rekrutmen.hasil-seleksi'
+                            ),
+                        ])
+                    >
+                        <button
+                            type="button"
+                            id="rsRecruitmentDropdownToggle"
+                            class="rs-nav-link rs-nav-dropdown-toggle"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            <i class="bi bi-people"></i>
+                            <span>Rekrutmen</span>
+                            <i class="bi bi-chevron-down rs-dropdown-chevron"></i>
+                        </button>
+
+                        <div class="rs-nav-dropdown-menu">
+
+                            {{-- Pengumuman --}}
+                            <button
+                                type="button"
+                                class="rs-nav-dropdown-menu-item rs-nav-dropdown-item"
+                                disabled
+                                aria-disabled="true"
+                            >
+                                <i class="bi bi-megaphone"></i>
+
+                                <span class="rs-dropdown-text">
+                                    <strong>Pengumuman</strong>
+                                    <small>Informasi lowongan pekerjaan</small>
+                                </span>
+                            </button>
+
+                            {{-- Registrasi --}}
+                            <button
+                                type="button"
+                                class="rs-nav-dropdown-menu-item rs-nav-dropdown-item"
+                                disabled
+                                aria-disabled="true"
+                            >
+                                <i class="bi bi-person-plus"></i>
+
+                                <span class="rs-dropdown-text">
+                                    <strong>Registrasi</strong>
+                                    <small>Pendaftaran calon pegawai</small>
+                                </span>
+                            </button>
+
+                            {{-- Hasil Seleksi --}}
+                            <button
+                                type="button"
+                                class="rs-nav-dropdown-menu-item rs-nav-dropdown-item"
+                                disabled
+                                aria-disabled="true"
+                            >
+                                <i class="bi bi-clipboard-check"></i>
+
+                                <span class="rs-dropdown-text">
+                                    <strong>Hasil Seleksi</strong>
+                                    <small>Informasi hasil seleksi calon pegawai</small>
+                                </span>
+                            </button>
 
                         </div>
                     </div>
@@ -268,7 +342,7 @@
                             </h3>
 
                             <div style="font-size:11px">
-                                Amanah, Santun, Ramah, Ikhlas
+                                ⭐⭐⭐⭐⭐ Terakreditasi Paripurna
                             </div>
                         </div>
 
@@ -287,7 +361,7 @@
 
                     <p>
                         <i class="bi bi-geo-alt me-2"></i>
-                        Jl. Mayor Sunaryo No. 37, Sukoharjo, Jawa Tengah
+                        Jl. Mayor Sunaryo No. 37, Sukoharjo, JT
                     </p>
 
                     <p>
@@ -316,7 +390,7 @@
                 </div>
 
                 <div class="col-12 col-sm-6 col-lg-4">
-                    <h3>Navigasi</h3>
+                    <h3>Menu</h3>
 
                     <p>
                         <a href="{{ route('beranda') }}" wire:navigate>
@@ -352,7 +426,7 @@
             </div>
 
             <div class="rs-footer-bottom">
-                &copy; {{ date('Y') }} RS PKU Muhammadiyah Sukoharjo.
+                &copy; {{ date('Y') }} IT RS PKU Muhammadiyah Sukoharjo.
                 Hak cipta dilindungi.
             </div>
 
