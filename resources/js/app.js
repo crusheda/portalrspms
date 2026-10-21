@@ -2,6 +2,7 @@ import './bootstrap';
 import 'bootstrap';
 
 import './components/radio-player';
+import './beranda';
 import './jadwal-dokter';
 import './ketersediaan-tempat-tidur';
 

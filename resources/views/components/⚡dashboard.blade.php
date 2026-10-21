@@ -930,14 +930,11 @@ class extends Component {};
     </div>
 
     {{-- =========================================
-         POSTER KESEHATAN
+        POSTER KESEHATAN
     ========================================== --}}
     <section class="rs-home-section rs-home-posters">
-
         <div class="rs-container">
-
             <div class="rs-home-section-heading rs-home-section-heading-row">
-
                 <div>
                     <span class="rs-home-section-label">
                         EDUKASI KESEHATAN
@@ -953,46 +950,89 @@ class extends Component {};
                         yang dapat Anda lihat dan pelajari.
                     </p>
                 </div>
-
             </div>
 
             <div class="rs-home-poster-grid">
-
                 @for ($i = 1; $i <= 7; $i++)
-
-                    <a
-                        href="{{ asset('img/eposter/' . $i . '.jpg') }}"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <button
+                        type="button"
                         class="rs-home-poster-card"
+                        data-poster-index="{{ $i - 1 }}"
+                        aria-label="Lihat poster edukasi kesehatan {{ $i }}"
                     >
-
                         <img
                             src="{{ asset('img/eposter/' . $i . '.jpg') }}"
                             alt="Poster edukasi kesehatan {{ $i }}"
                             loading="lazy"
                         >
 
-                        <div class="rs-home-poster-overlay">
+                        <span class="rs-home-poster-overlay">
                             <span>
                                 <i class="bi bi-arrows-fullscreen"></i>
                                 Lihat poster
                             </span>
-                        </div>
-
-                    </a>
-
+                        </span>
+                    </button>
                 @endfor
-
             </div>
-
         </div>
-
     </section>
 
+    {{-- =========================================
+        POSTER LIGHTBOX
+    ========================================== --}}
+    <div
+        class="rs-poster-lightbox"
+        id="rsPosterLightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Pratinjau poster kesehatan"
+        aria-hidden="true"
+        inert
+    >
+        <button
+            type="button"
+            class="rs-poster-lightbox-close"
+            id="rsPosterClose"
+            aria-label="Tutup poster"
+        >
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+        <button
+            type="button"
+            class="rs-poster-lightbox-nav rs-poster-lightbox-prev"
+            id="rsPosterPrev"
+            aria-label="Poster sebelumnya"
+        >
+            <i class="bi bi-chevron-left"></i>
+        </button>
+
+        <div class="rs-poster-lightbox-content">
+            <img
+                src=""
+                alt=""
+                id="rsPosterLightboxImage"
+            >
+
+            <div class="rs-poster-lightbox-caption">
+                <span id="rsPosterCaption">Poster edukasi kesehatan</span>
+                <span id="rsPosterCounter">1 / 7</span>
+            </div>
+        </div>
+
+        <button
+            type="button"
+            class="rs-poster-lightbox-nav rs-poster-lightbox-next"
+            id="rsPosterNext"
+            aria-label="Poster berikutnya"
+        >
+            <i class="bi bi-chevron-right"></i>
+        </button>
+    </div>
 
     {{-- =========================================
-         SURVEI KEPUASAN PASIEN
+        SURVEI KEPUASAN PASIEN
     ========================================== --}}
     <section class="rs-home-section rs-home-survey">
 
@@ -1088,6 +1128,97 @@ class extends Component {};
 
     </section>
 
+    {{-- =========================================
+        MEDIA SOSIAL RS PKU MUHAMMADIYAH SUKOHARJO
+    ========================================= --}}
+    <section class="rs-home-section rs-home-social">
+        <div class="rs-container">
+            <div class="rs-home-social-header">
+                <span class="rs-home-social-eyebrow">
+                    <i class="bi bi-share-fill"></i>
+                    TERHUBUNG DENGAN KAMI
+                </span>
+
+                <h2 class="rs-home-social-title">
+                    Ikuti Media Sosial <span>Kami</span>
+                </h2>
+
+                <p class="rs-home-social-description">
+                    Dapatkan informasi terbaru, kegiatan rumah sakit,
+                    edukasi kesehatan, dan berbagai layanan RS PKU Muhammadiyah Sukoharjo
+                    melalui media sosial resmi kami.
+                </p>
+            </div>
+
+            <div class="rs-home-social-grid">
+                {{-- TikTok --}}
+                <a
+                    href="https://www.tiktok.com/@rspkusukoharjo"
+                    class="rs-home-social-link rs-social-tiktok"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Kunjungi TikTok RS PKU Muhammadiyah Sukoharjo"
+                >
+                    <span class="rs-home-social-icon">
+                        <i class="bi bi-tiktok"></i>
+                    </span>
+
+                    <span class="rs-home-social-info">
+                        <strong>TikTok</strong>
+                        <small>@rspkusukoharjo</small>
+                    </span>
+
+                    <span class="rs-home-social-arrow">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </span>
+                </a>
+
+                {{-- YouTube --}}
+                <a
+                    href="https://www.youtube.com/channel/UC7KDgt-THy4y9tdso4YbDSw"
+                    class="rs-home-social-link rs-social-youtube"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Kunjungi YouTube RS PKU Muhammadiyah Sukoharjo"
+                >
+                    <span class="rs-home-social-icon">
+                        <i class="bi bi-youtube"></i>
+                    </span>
+
+                    <span class="rs-home-social-info">
+                        <strong>YouTube</strong>
+                        <small>Video &amp; edukasi kesehatan</small>
+                    </span>
+
+                    <span class="rs-home-social-arrow">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </span>
+                </a>
+
+                {{-- Instagram --}}
+                <a
+                    href="https://www.instagram.com/rspkusukoharjo"
+                    class="rs-home-social-link rs-social-instagram"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Kunjungi Instagram RS PKU Muhammadiyah Sukoharjo"
+                >
+                    <span class="rs-home-social-icon">
+                        <i class="bi bi-instagram"></i>
+                    </span>
+
+                    <span class="rs-home-social-info">
+                        <strong>Instagram</strong>
+                        <small>@rspkusukoharjo</small>
+                    </span>
+
+                    <span class="rs-home-social-arrow">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
 
     {{-- =========================================
          MOTTO

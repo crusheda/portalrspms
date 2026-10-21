@@ -1136,7 +1136,8 @@ img {
     position: fixed;
     right: 24px;
     bottom: 24px;
-    z-index: 2147483647;
+    z-index: 21474;
+    /* z-index: 2147483647; */
 
     display: grid;
     place-items: center;
